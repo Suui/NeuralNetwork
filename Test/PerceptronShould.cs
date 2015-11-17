@@ -8,11 +8,11 @@ namespace Test
 	public class PerceptronShould
 	{
 		[Test]
-		public void return_1_by_default()
+		public void return_0_by_default()
 		{
 			Perceptron perceptron = new Perceptron();
 
-			perceptron.ExitValue().Should().Be(1);
+			perceptron.ExitValue().Should().Be(0);
 		}
 	}
 
@@ -20,7 +20,7 @@ namespace Test
 	{
 		public int ExitValue()
 		{
-			return 1;
+			return 0;
 		}
 	}
 }
