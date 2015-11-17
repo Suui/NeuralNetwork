@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using FluentAssertions;
+using NSubstitute;
 
 
 namespace Test
@@ -10,7 +11,7 @@ namespace Test
 		[Test]
 		public void return_1_by_default()
 		{
-			Perceptron perceptron = new Perceptron();
+			var perceptron = new Perceptron();
 
 			perceptron.ExitValue().Should().Be(1.0);
 		}
