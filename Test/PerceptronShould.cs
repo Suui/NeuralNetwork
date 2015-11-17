@@ -8,19 +8,26 @@ namespace Test
 	public class PerceptronShould
 	{
 		[Test]
-		public void return_0_by_default()
+		public void return_1_by_default()
 		{
 			Perceptron perceptron = new Perceptron();
 
-			perceptron.ExitValue().Should().Be(0);
+			perceptron.ExitValue().Should().Be(1.0);
 		}
 	}
 
 	public class Perceptron
 	{
-		public int ExitValue()
+		double U { get; }
+
+		public Perceptron()
 		{
-			return 0;
+			U = 1.0;
+		}
+
+		public double ExitValue()
+		{
+			return U;
 		}
 	}
 }
