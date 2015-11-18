@@ -28,25 +28,6 @@ namespace Test
 			return ConnectionList.Count();
 		}
 	}
-
-	public class ConnectionListBuilder
-	{
-		public static ConnectionList Build(int leftPerceptrons, int rightPerceptrons)
-		{
-			var connectionList = new ConnectionList();
-
-			for (int i = 0; i < leftPerceptrons; i++)
-			{
-				for (int j = 0; j < rightPerceptrons; j++)
-				{
-					connectionList.Add(new Connection(i + 1, j + 1));
-				}
-			}
-
-			return connectionList;
-		}
-	}
-
 	public class ConnectionList
 	{
 		Dictionary<Tuple<int, int>, Connection> Connections { get; } = new Dictionary<Tuple<int, int>, Connection>();
