@@ -28,7 +28,7 @@ namespace Test
 		{
 			var layer = new Layer(1, 1);
 
-			layer.WeightForConnection(new Connection(1, 1)).Value.Should().Be(1.0);
+			layer.Connection(1, 1).Weight.Should().Be(1.0);
 		}
 
 		[Test]
@@ -36,9 +36,9 @@ namespace Test
 		{
 			var layer = new Layer(1, 1);
 
-			layer.WeightForConnection(new Connection(1, 1)).Value = 0.0;
+			layer.Connection(1, 1).Weight = 0.0;
 
-			layer.WeightForConnection(new Connection(1, 1)).Value.Should().Be(0.0);
+			layer.Connection(1, 1).Weight.Should().Be(0.0);
 		}
 	}
 }

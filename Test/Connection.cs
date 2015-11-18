@@ -10,6 +10,7 @@ namespace Test
 		{
 			From = from;
 			To = to;
+			Weight = 1.0;
 		}
 
 		protected bool Equals(Connection other)
