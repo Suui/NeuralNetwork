@@ -24,5 +24,7 @@ namespace Source.Layers
 
 			return Layers.Count >= index - 1;
 		}
+
+		public Layer this[int index] => Layers[index-1];
 	}
 }
