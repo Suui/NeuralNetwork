@@ -23,8 +23,4 @@ namespace Test
 			layer.GetConnections().ContainsKey(new Connection(2, 4)).Should().BeTrue();
 		}
 	}
-
-	public class Weight
-	{
-	}
 }
