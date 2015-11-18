@@ -14,7 +14,7 @@ namespace Source.Layers
 			LayerDictionary = new Dictionary<int, Layer>();
 		}
 
-		public bool HasLayerParallel(int index)
+		public bool HasLayer(int index)
 		{
 			return LayerDictionary.ContainsKey(index);
 		}
