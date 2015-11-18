@@ -11,7 +11,7 @@ namespace Test
 			Connections = ConnectionDictionaryBuilder.Build(leftPerceptrons, rightPerceptrons);
 		}
 
-		public Weight GetWeightForConnection(Connection connection)
+		public Weight WeightForConnection(Connection connection)
 		{
 			return Connections[connection];
 		}
