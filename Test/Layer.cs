@@ -16,6 +16,11 @@ namespace Test
 			return Connections[connection];
 		}
 
+		public void SetWeightForConnection(Connection connection, double value)
+		{
+			Connections[connection] = value;
+		}
+
 		public void SetWeightForConnection(int from, int to, double value)
 		{
 			Connections[new Connection(from, to)] = value;
