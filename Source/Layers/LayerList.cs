@@ -19,6 +19,6 @@ namespace Source.Layers
 			return LayerDictionary.ContainsKey(index);
 		}
 
-		public Layer this[int index] => Layers[index-1];
+		public Layer this[int index] => LayerDictionary[index];
 	}
 }

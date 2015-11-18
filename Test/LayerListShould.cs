@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FluentAssertions;
 using NUnit.Framework;
 using Source.Layers;
@@ -31,11 +32,11 @@ namespace Test
 											   .WithLayer(3).From(4).To(2)
 											   .Get();
 
-			Assert.Throws<ArgumentOutOfRangeException>(() => layers[0].Count());
+			Assert.Throws<KeyNotFoundException>(() => layers[0].Count());
 			layers[1].Count().Should().Be(12);
 			layers[2].Count().Should().Be(16);
 			layers[3].Count().Should().Be(8);
-			Assert.Throws<ArgumentOutOfRangeException>(() => layers[4].Count());
+			Assert.Throws<KeyNotFoundException>(() => layers[4].Count());
 		}
 	}
 }
