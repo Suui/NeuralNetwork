@@ -1,24 +1,16 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
+
 
 namespace Test
 {
 	public class Layer
 	{
-		public ConnectionDictionary Connections { get; }
 		public ConnectionList ConnectionList { get; }
 
 		public Layer(int leftPerceptrons, int rightPerceptrons)
 		{
-			Connections = ConnectionDictionaryBuilder.Build(leftPerceptrons, rightPerceptrons);
 			ConnectionList = ConnectionListBuilder.Build(leftPerceptrons, rightPerceptrons);
-		}
-
-		public Weight WeightForConnection(Connection connection)
-		{
-			return Connections[connection];
 		}
 
 		public Connection Connection(int from, int to)
