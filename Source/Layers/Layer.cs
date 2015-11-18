@@ -7,10 +7,17 @@ namespace Source.Layers
 	{
 		public ConnectionList Connections { get; }
 		public PerceptronList Perceptrons { get; }
+		public int Index { get; }
 
 		public Layer(int leftPerceptrons, int rightPerceptrons)
 		{
 			Connections = ConnectionListBuilder.Build(leftPerceptrons, rightPerceptrons);
+		}
+
+		public Layer(int index, int leftPerceptrons, int rightPerceptrons)
+		{
+			Connections = ConnectionListBuilder.Build(leftPerceptrons, rightPerceptrons);
+			Index = index;
 		}
 
 		public Connection Connection(int from, int to)

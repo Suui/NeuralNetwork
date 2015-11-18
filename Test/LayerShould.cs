@@ -42,5 +42,13 @@ namespace Test
 
 			Layer.Connection(1, 1).Weight.Should().Be(0.0);
 		}
+
+		[Test]
+		public void return_its_index()
+		{
+			var layer = new Layer(1, 2, 4);
+
+			layer.Index.Should().Be(1);
+		}
 	}
 }
