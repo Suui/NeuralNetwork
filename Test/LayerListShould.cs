@@ -9,12 +9,12 @@ namespace Test
 	[TestFixture]
 	public class LayerListShould
 	{
-		public LayerList Layers { get; set; }
+		public LayerDictionary Layers { get; set; }
 
 		[SetUp]
 		public void given_a_layer_list_with_3_layers()
 		{
-			Layers = new LayerListBuilder().Build()
+			Layers = new LayerDictionaryBuilder().Build()
 											   .WithLayer(1).From(3).To(4)
 											   .WithLayer(2).From(4).To(4)
 											   .WithLayer(3).From(4).To(2)

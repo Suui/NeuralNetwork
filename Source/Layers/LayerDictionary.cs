@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Source.Layers
 {
-	public class LayerList
+	public class LayerDictionary
 	{
 		private Dictionary<int, Layer> Layers { get; set; }
 
-		public LayerList()
+		public LayerDictionary()
 		{
 			Layers = new Dictionary<int, Layer>();
 		}
