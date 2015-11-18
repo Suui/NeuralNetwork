@@ -8,14 +8,7 @@ namespace Test
 
 		public Layer(int leftPerceptrons, int rightPerceptrons)
 		{
-			Connections = new ConnectionDictionary();
-			for (int i = 0; i < leftPerceptrons; i++)
-			{
-				for (int j = 0; j < rightPerceptrons; j++)
-				{
-					Connections.Add(new Connection(i+1, j+1), new Weight());
-				}
-			}
+			Connections = ConnectionDictionaryBuilder.Build(leftPerceptrons, rightPerceptrons);
 		}
 
 		public ConnectionDictionary GetConnections()
