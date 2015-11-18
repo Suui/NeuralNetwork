@@ -12,12 +12,6 @@ namespace Source.Layers
 			Layers = new List<Layer>();
 		}
 
-		public LayerList With(Layer layer)
-		{
-			Layers.Add(layer);
-			return this;
-		}
-
 		public bool Haslayer(int index)
 		{
 			if (index - 1 < 0) return false;
