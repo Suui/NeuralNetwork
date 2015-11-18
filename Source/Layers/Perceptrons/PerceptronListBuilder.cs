@@ -11,14 +11,22 @@ namespace Source.Layers.Perceptrons
 
 			if (previousLayer == null)
 			{
-				for (var i = 0; i < numberOfPerceptrons; i++)
-					perceptrons.Add(new EntryPerceptron(i));
+				return EntryPerceptrons(numberOfPerceptrons);
 			}
-			else
-			{
-				for (var i = 0; i < numberOfPerceptrons; i++)
-					perceptrons.Add(new Perceptron(i, previousLayer));
-			}
+
+			for (var i = 0; i < numberOfPerceptrons; i++)
+				perceptrons.Add(new Perceptron(i, previousLayer));
+
+			return new PerceptronList(perceptrons);
+		}
+
+		private static PerceptronList EntryPerceptrons(int numberOfPerceptrons)
+		{
+			var perceptrons = new List<Perceptron>();
+
+			for (var i = 0; i < numberOfPerceptrons; i++)
+				perceptrons.Add(new EntryPerceptron(i));
+
 			return new PerceptronList(perceptrons);
 		}
 	}
