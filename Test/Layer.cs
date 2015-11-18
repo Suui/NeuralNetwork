@@ -15,5 +15,10 @@ namespace Test
 		{
 			return Connections;
 		}
+
+		public double GetWeightForConnection(int from, int to)
+		{
+			return Connections[new Connection(from, to)];
+		}
 	}
 }
