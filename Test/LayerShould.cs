@@ -20,7 +20,7 @@ namespace Test
 		{
 			var layer = new Layer(2, 4);
 
-			layer.Connections.ContainsKey(new Connection(2, 4)).Should().BeTrue();
+			layer.HasConnection(2, 4).Should().BeTrue();
 		}
 
 		[Test]

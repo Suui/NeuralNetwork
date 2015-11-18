@@ -25,6 +25,12 @@ namespace Test
 		{
 			return ConnectionList[from, to];
 		}
+
+		public bool HasConnection(int from, int to)
+		{
+			return ConnectionList.ContainsKey(from, to);
+		}
+
 		public int Count()
 		{
 			return ConnectionList.Count();
@@ -59,6 +65,11 @@ namespace Test
 		}
 
 		public Connection this[int from, int to] => Connections[new Tuple<int, int>(@from, to)];
+
+		public bool ContainsKey(int from, int to)
+		{
+			return Connections.ContainsKey(new Tuple<int, int>(from, to));
+		}
 
 		public int Count()
 		{
