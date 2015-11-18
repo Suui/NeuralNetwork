@@ -17,6 +17,7 @@ namespace Test
 									.With(new Layer(4, 2));
 
 			layers.Haslayer(0).Should().BeFalse();
+			layers.Haslayer(3).Should().BeTrue();
 		}
 	}
 
@@ -37,7 +38,9 @@ namespace Test
 
 		public bool Haslayer(int index)
 		{
-			return false;
+			if (index - 1 < 0) return false;
+
+			return Layers.Count >= index - 1;
 		}
 	}
 }
