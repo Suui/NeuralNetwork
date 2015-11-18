@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using FluentAssertions;
-using NSubstitute;
 
 
 namespace Test
