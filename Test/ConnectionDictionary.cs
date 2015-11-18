@@ -5,7 +5,7 @@ namespace Test
 {
 	public class ConnectionDictionary
 	{
-		public Dictionary<Connection, Weight> Connections { get; set; }
+		private Dictionary<Connection, Weight> Connections { get; }
 
 		public ConnectionDictionary()
 		{
