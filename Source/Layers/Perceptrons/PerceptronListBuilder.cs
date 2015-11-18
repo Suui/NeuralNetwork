@@ -7,11 +7,11 @@ namespace Source.Layers.Perceptrons
 	{
 		public static PerceptronList Build(int numberOfPerceptrons, Layer previousLayer)
 		{
-			return previousLayer == null ? EntryPerceptrons(numberOfPerceptrons)
-										 : ListOfPerceptrons(numberOfPerceptrons, previousLayer);
+			return previousLayer == null ? EntryPerceptronList(numberOfPerceptrons)
+										 : PerceptronList(numberOfPerceptrons, previousLayer);
 		}
 
-		private static PerceptronList ListOfPerceptrons(int numberOfPerceptrons, Layer previousLayer)
+		private static PerceptronList PerceptronList(int numberOfPerceptrons, Layer previousLayer)
 		{
 			var perceptrons = new List<Perceptron>();
 
@@ -21,7 +21,7 @@ namespace Source.Layers.Perceptrons
 			return new PerceptronList(perceptrons);
 		}
 
-		private static PerceptronList EntryPerceptrons(int numberOfPerceptrons)
+		private static PerceptronList EntryPerceptronList(int numberOfPerceptrons)
 		{
 			var perceptrons = new List<Perceptron>();
 
