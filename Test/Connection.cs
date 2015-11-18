@@ -2,8 +2,8 @@ namespace Test
 {
 	public class Connection
 	{
-		public int From { get; set; }
-		public int To { get; set; }
+		public int From { get; }
+		public int To { get; }
 
 		public Connection(int from, int to)
 		{
