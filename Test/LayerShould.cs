@@ -1,6 +1,6 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NUnit.Framework;
+
 
 namespace Test
 {
@@ -12,7 +12,7 @@ namespace Test
 		{
 			var layer = new Layer(2, 4);
 
-			layer.GetConnections().Count.Should().Be(8);
+			layer.GetConnections().Count().Should().Be(8);
 		}
 
 		[Test]
