@@ -17,6 +17,11 @@ namespace Test
 									.With(new Layer(4, 4))
 									.With(new Layer(4, 2));
 
+			layers = new LayerList()
+							.WithLayer(1).From(3).To(4)
+							.WithLayer(2).From(4).To(4)
+							.WithLayer(3).From(4).To(2);
+
 			layers.Haslayer(0).Should().BeFalse();
 			layers.Haslayer(3).Should().BeTrue();
 		}

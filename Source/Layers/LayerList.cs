@@ -26,5 +26,27 @@ namespace Source.Layers
 		}
 
 		public Layer this[int index] => Layers[index-1];
+
+
+		private int Index;
+		private int LeftPerceptrons;
+
+		public LayerList WithLayer(int index)
+		{
+			Index = index;
+			return this;
+		}
+
+		public LayerList From(int leftPerceptrons)
+		{
+			LeftPerceptrons = leftPerceptrons;
+			return this;
+		}
+
+		public LayerList To(int rightPerceptrons)
+		{
+			Layers.Add(new Layer(Index, LeftPerceptrons, rightPerceptrons));
+			return this;
+		}
 	}
 }
