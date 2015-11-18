@@ -34,6 +34,11 @@ namespace Source.Layers
 		{
 			return Connections.Count();
 		}
+
+		public Perceptron Perceptron(int index)
+		{
+			throw new System.NotImplementedException();
+		}
 	}
 
 	public class PerceptronList

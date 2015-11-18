@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
 using FluentAssertions;
+using Source;
+using Source.Layers;
 
 
 namespace Test
@@ -10,24 +12,9 @@ namespace Test
 		[Test]
 		public void return_1_by_default()
 		{
-			var perceptron = new Perceptron();
+			var perceptron = new Perceptron(0, new Layer(1, 2));
 
 			perceptron.ExitValue().Should().Be(1.0);
-		}
-	}
-
-	public class Perceptron
-	{
-		double U { get; }
-
-		public Perceptron()
-		{
-			U = 1.0;
-		}
-
-		public double ExitValue()
-		{
-			return U;
 		}
 	}
 }
