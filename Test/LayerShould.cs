@@ -25,6 +25,7 @@ namespace Test
 		[Test]
 		public void have_the_correct_indexes()
 		{
+			Layer.HasConnection(0, 0).Should().BeFalse();
 			Layer.HasConnection(2, 4).Should().BeTrue();
 		}
 
