@@ -17,9 +17,8 @@ namespace Source.Layers.Perceptrons
 
 		public virtual double ExitValue()
 		{
-			return U;
-			//return U + PreviousLayer.Connection(1, Index).Weight * PreviousLayer.Perceptron(1).ExitValue()
-			//		 + PreviousLayer.Connection(2, Index).Weight * PreviousLayer.Perceptron(2).ExitValue();
+			return U + PreviousLayer.Connection(1, Index).Weight * PreviousLayer.Perceptron(1).ExitValue()
+					 + PreviousLayer.Connection(2, Index).Weight * PreviousLayer.Perceptron(2).ExitValue();
 		}
 	}
 

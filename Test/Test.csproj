@@ -71,7 +71,6 @@
     <Compile Include="LayerListShould.cs" />
     <Compile Include="LayerShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PerceptronShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
