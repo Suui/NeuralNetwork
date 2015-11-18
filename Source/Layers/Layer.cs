@@ -38,7 +38,7 @@ namespace Source.Layers
 
 		public Perceptron Perceptron(int index)
 		{
-			throw new System.NotImplementedException();
+			return Perceptrons[index - 1];
 		}
 	}
 }

@@ -5,11 +5,13 @@ namespace Source.Layers.Perceptrons
 {
 	public class PerceptronList
 	{
-		private List<Perceptron> Perceptrons;
+		private readonly List<Perceptron> _perceptrons;
 
 		public PerceptronList(List<Perceptron> perceptrons)
 		{
-			Perceptrons = perceptrons;
+			_perceptrons = perceptrons;
 		}
+
+		public Perceptron this[int index] => _perceptrons[index];
 	}
 }

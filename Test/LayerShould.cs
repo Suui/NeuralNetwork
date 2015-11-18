@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System;
+using FluentAssertions;
 using NUnit.Framework;
 using Source.Layers;
 
@@ -41,6 +42,13 @@ namespace Test
 			Layer.Connection(1, 1).Weight = 0.0;
 
 			Layer.Connection(1, 1).Weight.Should().Be(0.0);
+		}
+
+		[Test]
+		public void get_a_perceptron_with_correct_indexes()
+		{
+			Assert.Throws<ArgumentOutOfRangeException>(() => Layer.Perceptron(0));
+			Layer.Perceptron(1).ExitValue().Should().Be(0.0);
 		}
 	}
 }
