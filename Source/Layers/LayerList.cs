@@ -21,6 +21,11 @@ namespace Source.Layers
 			return Layers.Count >= index - 1;
 		}
 
+		public bool HasLayerParallel(int index)
+		{
+			return LayerDictionary.ContainsKey(index);
+		}
+
 		public Layer this[int index] => Layers[index-1];
 	}
 }
