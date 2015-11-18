@@ -68,16 +68,18 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Layers\Connections\Connection.cs" />
-    <Compile Include="Layers\Connections\ConnectionList.cs" />
-    <Compile Include="Layers\Connections\ConnectionListBuilder.cs" />
-    <Compile Include="Layers\Layer.cs" />
     <Compile Include="LayerShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PerceptronShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Source\Source.csproj">
+      <Project>{ec821ee1-3cb3-497a-a711-09d545ff12fc}</Project>
+      <Name>Source</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
