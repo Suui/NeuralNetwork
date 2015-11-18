@@ -12,7 +12,7 @@ namespace Test
 		{
 			var layer = new Layer(2, 4);
 
-			layer.GetConnections().Count().Should().Be(8);
+			layer.Connections.Count().Should().Be(8);
 		}
 
 		[Test]
@@ -20,7 +20,7 @@ namespace Test
 		{
 			var layer = new Layer(2, 4);
 
-			layer.GetConnections().ContainsKey(new Connection(2, 4)).Should().BeTrue();
+			layer.Connections.ContainsKey(new Connection(2, 4)).Should().BeTrue();
 		}
 
 		[Test]
