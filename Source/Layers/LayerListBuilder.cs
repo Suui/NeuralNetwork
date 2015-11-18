@@ -30,7 +30,7 @@ namespace Source.Layers
 
 		public LayerListBuilder To(int rightPerceptrons)
 		{
-			_layerList.LayerDictionary.Add(_index, new Layer(_index, _leftPerceptrons, rightPerceptrons));
+			_layerList.Add(_index, new Layer(_index, _leftPerceptrons, rightPerceptrons));
 			return this;
 		}
 

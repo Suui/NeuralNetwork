@@ -5,18 +5,23 @@ namespace Source.Layers
 {
 	public class LayerList
 	{
-		public Dictionary<int, Layer>  LayerDictionary { get; set; }
+		private Dictionary<int, Layer> Layers { get; set; }
 
 		public LayerList()
 		{
-			LayerDictionary = new Dictionary<int, Layer>();
+			Layers = new Dictionary<int, Layer>();
 		}
 
 		public bool HasLayer(int index)
 		{
-			return LayerDictionary.ContainsKey(index);
+			return Layers.ContainsKey(index);
 		}
 
-		public Layer this[int index] => LayerDictionary[index];
+		public void Add(int index, Layer layer)
+		{
+			Layers.Add(index, layer);
+		}
+
+		public Layer this[int index] => Layers[index];
 	}
 }
