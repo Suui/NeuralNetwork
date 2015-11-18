@@ -30,5 +30,15 @@ namespace Test
 
 			layer.GetWeightForConnection(1, 1).Should().Be(1.0);
 		}
+
+		[Test]
+		public void set_a_connection_for_a_weight()
+		{
+			var layer = new Layer(1, 1);
+
+			layer.SetWeightForConnection(1, 1, 0.0);
+
+			layer.GetWeightForConnection(1, 1).Should().Be(0.0);
+		}
 	}
 }

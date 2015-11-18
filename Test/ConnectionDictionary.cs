@@ -27,6 +27,10 @@ namespace Test
 			return Connections.ContainsKey(connection);
 		}
 
-		public double this[Connection connection] => Connections[connection].GetValue();
+		public double this[Connection connection]
+		{
+			get { return Connections[connection].WeightValue; }
+			set { Connections[connection].WeightValue = value; }
+		}
 	}
 }
