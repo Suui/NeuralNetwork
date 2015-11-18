@@ -1,4 +1,5 @@
 ﻿using Source.Layers.Connections;
+using Source.Layers.Perceptrons;
 
 
 namespace Source.Layers
@@ -7,17 +8,22 @@ namespace Source.Layers
 	{
 		public ConnectionList Connections { get; }
 		public PerceptronList Perceptrons { get; }
-		public int Index { get; }
 
 		public Layer(int leftPerceptrons, int rightPerceptrons)
 		{
 			Connections = ConnectionListBuilder.Build(leftPerceptrons, rightPerceptrons);
+			Perceptrons = PerceptronListBuilder.Build(leftPerceptrons, null);
 		}
 
 		public Layer(int index, int leftPerceptrons, int rightPerceptrons)
 		{
 			Connections = ConnectionListBuilder.Build(leftPerceptrons, rightPerceptrons);
-			Index = index;
+		}
+
+		public Layer(int leftPerceptrons, int rightPerceptrons, Layer previousLayer)
+		{
+			Connections = ConnectionListBuilder.Build(leftPerceptrons, rightPerceptrons);
+			Perceptrons = PerceptronListBuilder.Build(leftPerceptrons, previousLayer);
 		}
 
 		public Connection Connection(int from, int to)
@@ -39,10 +45,5 @@ namespace Source.Layers
 		{
 			throw new System.NotImplementedException();
 		}
-	}
-
-	public class PerceptronList
-	{
-
 	}
 }

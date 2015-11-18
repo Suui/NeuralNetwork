@@ -30,7 +30,9 @@ namespace Source.Layers
 
 		public LayerDictionaryBuilder To(int rightPerceptrons)
 		{
-			_layerDictionary.Add(_index, new Layer(_index, _leftPerceptrons, rightPerceptrons));
+			_layerDictionary.Add(_index,
+								 _layerDictionary.HasLayer(_index - 1) ? new Layer(_leftPerceptrons, rightPerceptrons, _layerDictionary[_index - 1])
+																	   : new Layer(_leftPerceptrons, rightPerceptrons));
 			return this;
 		}
 

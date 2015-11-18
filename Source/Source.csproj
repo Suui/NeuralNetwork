@@ -49,7 +49,9 @@
     <Compile Include="Layers\Layer.cs" />
     <Compile Include="Layers\LayerDictionary.cs" />
     <Compile Include="Layers\LayerDictionaryBuilder.cs" />
-    <Compile Include="Perceptron.cs" />
+    <Compile Include="Layers\Perceptrons\PerceptronList.cs" />
+    <Compile Include="Layers\Perceptrons\PerceptronListBuilder.cs" />
+    <Compile Include="Layers\Perceptrons\Perceptron.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
