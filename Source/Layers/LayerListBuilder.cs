@@ -32,6 +32,8 @@ namespace Source.Layers
 		{
 			var layer = new Layer(_index, _leftPerceptrons, rightPerceptrons);
 			_layerList.Layers.Add(layer);
+
+			_layerList.LayerDictionary.Add(_index, layer);
 			return this;
 		}
 
