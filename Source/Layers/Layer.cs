@@ -6,6 +6,7 @@ namespace Source.Layers
 	public class Layer
 	{
 		public ConnectionList Connections { get; }
+		public PerceptronList Perceptrons { get; }
 
 		public Layer(int leftPerceptrons, int rightPerceptrons)
 		{
@@ -26,5 +27,10 @@ namespace Source.Layers
 		{
 			return Connections.Count();
 		}
+	}
+
+	public class PerceptronList
+	{
+
 	}
 }
