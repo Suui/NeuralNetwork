@@ -68,6 +68,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Connection.cs" />
     <Compile Include="Layer.cs" />
     <Compile Include="LayerShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
