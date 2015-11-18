@@ -20,10 +20,5 @@ namespace Test
 		{
 			Connections[connection] = value;
 		}
-
-		public void SetWeightForConnection(int from, int to, double value)
-		{
-			Connections[new Connection(from, to)] = value;
-		}
 	}
 }

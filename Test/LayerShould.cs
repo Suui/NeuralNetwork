@@ -36,7 +36,7 @@ namespace Test
 		{
 			var layer = new Layer(1, 1);
 
-			layer.SetWeightForConnection(1, 1, 0.0);
+			layer.SetWeightForConnection(new Connection(1, 1), 0.0);
 
 			layer.GetWeightForConnection(new Connection(1, 1)).Should().Be(0.0);
 		}
