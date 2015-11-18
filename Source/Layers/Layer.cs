@@ -1,7 +1,7 @@
-﻿using Test.Layers.Connections;
+﻿using Source.Layers.Connections;
 
 
-namespace Test.Layers
+namespace Source.Layers
 {
 	public class Layer
 	{
