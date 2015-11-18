@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NUnit.Framework;
 using Source.Layers;
+
 
 namespace Test
 {
@@ -18,29 +18,6 @@ namespace Test
 
 			layers.Haslayer(0).Should().BeFalse();
 			layers.Haslayer(3).Should().BeTrue();
-		}
-	}
-
-	public class LayerList
-	{
-		public List<Layer> Layers { get; set; }
-
-		public LayerList()
-		{
-			Layers = new List<Layer>();
-		}
-
-		public LayerList With(Layer layer)
-		{
-			Layers.Add(layer);
-			return this;
-		}
-
-		public bool Haslayer(int index)
-		{
-			if (index - 1 < 0) return false;
-
-			return Layers.Count >= index - 1;
 		}
 	}
 }

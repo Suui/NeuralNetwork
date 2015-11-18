@@ -47,6 +47,7 @@
     <Compile Include="Layers\Connections\ConnectionList.cs" />
     <Compile Include="Layers\Connections\ConnectionListBuilder.cs" />
     <Compile Include="Layers\Layer.cs" />
+    <Compile Include="Layers\LayerList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
