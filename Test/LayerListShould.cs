@@ -18,8 +18,8 @@ namespace Test
 											   .WithLayer(3).From(4).To(2)
 											   .Get();
 
-			layers.Haslayer(0).Should().BeFalse();
-			layers.Haslayer(3).Should().BeTrue();
+			layers.HasLayerParallel(0).Should().BeFalse();
+			layers.HasLayerParallel(3).Should().BeTrue();
 		}
 
 		[Test]
