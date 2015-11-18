@@ -4,12 +4,13 @@ namespace Source
 {
 	public class Perceptron
 	{
-		private Layer PreviousLayer { get; set; }
+		private Layer PreviousLayer { get; }
 		private int Index { get; }
-		public double U { get; }
+		public double U { get; set; }
 
 		public Perceptron(int index, Layer previousLayer)
 		{
+			PreviousLayer = previousLayer;
 			Index = index;
 			U = 1.0;
 		}
