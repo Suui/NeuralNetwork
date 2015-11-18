@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using FluentAssertions;
-using Source;
 using Source.Layers;
 using Source.Layers.Perceptrons;
 

@@ -1,6 +1,6 @@
 ﻿
 
-namespace NeuralNetwork
+namespace Source
 {
 	class Program
 	{
