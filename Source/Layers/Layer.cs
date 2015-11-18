@@ -15,11 +15,6 @@ namespace Source.Layers
 			Perceptrons = PerceptronListBuilder.Build(leftPerceptrons, null);
 		}
 
-		public Layer(int index, int leftPerceptrons, int rightPerceptrons)
-		{
-			Connections = ConnectionListBuilder.Build(leftPerceptrons, rightPerceptrons);
-		}
-
 		public Layer(int leftPerceptrons, int rightPerceptrons, Layer previousLayer)
 		{
 			Connections = ConnectionListBuilder.Build(leftPerceptrons, rightPerceptrons);
