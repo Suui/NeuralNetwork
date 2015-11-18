@@ -8,7 +8,7 @@ namespace Test
 	public class LayerShould
 	{
 		[Test]
-		public void have_8_connections_when_built_with_2_and_4()
+		public void have_8_connections_when_built_from_2_to_4()
 		{
 			var layer = new Layer(2, 4);
 
