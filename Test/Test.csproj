@@ -68,8 +68,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Connection.cs" />
+    <Compile Include="ConnectionDictionary.cs" />
+    <Compile Include="ConnectionDictionaryBuilder.cs" />
+    <Compile Include="Layer.cs" />
+    <Compile Include="LayerShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PerceptronShould.cs" />
+    <Compile Include="Weight.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
