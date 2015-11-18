@@ -25,6 +25,10 @@ namespace Test
 		{
 			return ConnectionList[from, to];
 		}
+		public int Count()
+		{
+			return ConnectionList.Count();
+		}
 	}
 
 	public class ConnectionListBuilder
@@ -55,5 +59,10 @@ namespace Test
 		}
 
 		public Connection this[int from, int to] => Connections[new Tuple<int, int>(@from, to)];
+
+		public int Count()
+		{
+			return Connections.Count;
+		}
 	}
 }

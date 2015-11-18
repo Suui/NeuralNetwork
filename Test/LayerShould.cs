@@ -12,7 +12,7 @@ namespace Test
 		{
 			var layer = new Layer(2, 4);
 
-			layer.Connections.Count().Should().Be(8);
+			layer.Count().Should().Be(8);
 		}
 
 		[Test]
