@@ -15,10 +15,5 @@ namespace Test
 		{
 			return Connections[connection];
 		}
-
-		public void SetWeightForConnection(Connection connection, Weight weight)
-		{
-			Connections[connection] = weight;
-		}
 	}
 }
