@@ -68,10 +68,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Connection.cs" />
-    <Compile Include="ConnectionList.cs" />
-    <Compile Include="ConnectionListBuilder.cs" />
-    <Compile Include="Layer.cs" />
+    <Compile Include="Layers\Connections\Connection.cs" />
+    <Compile Include="Layers\Connections\ConnectionList.cs" />
+    <Compile Include="Layers\Connections\ConnectionListBuilder.cs" />
+    <Compile Include="Layers\Layer.cs" />
     <Compile Include="LayerShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PerceptronShould.cs" />

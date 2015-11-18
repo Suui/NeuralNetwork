@@ -1,4 +1,4 @@
-﻿namespace Test
+﻿namespace Test.Layers.Connections
 {
 	public class ConnectionListBuilder
 	{

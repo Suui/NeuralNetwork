@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
-namespace Test
+namespace Test.Layers.Connections
 {
 	public class ConnectionList
 	{
