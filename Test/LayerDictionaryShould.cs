@@ -7,7 +7,7 @@ using Source.Layers;
 namespace Test
 {
 	[TestFixture]
-	public class LayerListShould
+	public class LayerDictionaryShould
 	{
 		public LayerDictionary Layers { get; set; }
 
