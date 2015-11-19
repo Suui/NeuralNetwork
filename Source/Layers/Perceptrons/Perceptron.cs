@@ -1,10 +1,12 @@
+using System;
+
 namespace Source.Layers.Perceptrons
 {
 	public class Perceptron
 	{
 		private Layer PreviousLayer { get; }
 		protected int Index { get; set; }
-		public double U { get; set; }
+		public double Threshold { get; set; }
 
 		protected Perceptron() {}
 
@@ -12,13 +14,29 @@ namespace Source.Layers.Perceptrons
 		{
 			PreviousLayer = previousLayer;
 			Index = index;
-			U = 1.0;
+			Threshold = 1.0;
 		}
 
 		public virtual double ExitValue()
 		{
-			return U + PreviousLayer.Connection(1, Index).Weight * PreviousLayer.Perceptron(1).ExitValue()
-					 + PreviousLayer.Connection(2, Index).Weight * PreviousLayer.Perceptron(2).ExitValue();
+			double x = Threshold + Summation(1, PreviousLayer.CountPerceptrons);
+
+			return Sigmoide(x);
+		}
+
+		private double Summation(int from, int to)
+		{
+			var result = 0.0;
+
+			for (var j = from; j < to; j++)
+				result += PreviousLayer.Perceptron(j).ExitValue() * PreviousLayer.Connection(j, Index).Weight;
+
+			return result;
+		}
+
+		public double Sigmoide(double x)
+		{
+			return 1 / (1 + Math.Pow(Math.E, -x));
 		}
 	}
 
@@ -29,6 +47,7 @@ namespace Source.Layers.Perceptrons
 		public EntryPerceptron(int index)
 		{
 			Index = index;
+			EntryValue = 0.0;
 		}
 
 		public override double ExitValue()

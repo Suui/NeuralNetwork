@@ -8,6 +8,7 @@ namespace Source.Layers
 	{
 		public ConnectionList Connections { get; }
 		public PerceptronList Perceptrons { get; }
+		public int CountPerceptrons => Perceptrons.Count;
 
 		public Layer(int leftPerceptrons, int rightPerceptrons)
 		{

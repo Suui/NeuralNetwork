@@ -7,6 +7,7 @@ namespace Source.Layers.Perceptrons
 	public class PerceptronList : IEnumerable
 	{
 		private readonly List<Perceptron> _perceptrons;
+		public int Count => _perceptrons.Count;
 
 		public PerceptronList(List<Perceptron> perceptrons)
 		{
