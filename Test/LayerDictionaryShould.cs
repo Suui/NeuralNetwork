@@ -31,11 +31,11 @@ namespace Test
 		[Test]
 		public void return_layers_with_their_correct_indexes()
 		{
-			Assert.Throws<KeyNotFoundException>(() => Layers[0].Count());
-			Layers[1].Count().Should().Be(12);
-			Layers[2].Count().Should().Be(16);
-			Layers[3].Count().Should().Be(8);
-			Assert.Throws<KeyNotFoundException>(() => Layers[4].Count());
+//			Assert.Throws<KeyNotFoundException>(() => Layers[0].CountConnections);
+			Layers[1].CountConnections.Should().Be(12);
+			Layers[2].CountConnections.Should().Be(16);
+			Layers[3].CountConnections.Should().Be(8);
+//			Assert.Throws<KeyNotFoundException>(() => Layers[4].CountConnections);
 		}
 	}
 }

@@ -9,6 +9,7 @@ namespace Source.NeuralNetworks.Layers
 		public ConnectionList Connections { get; }
 		public PerceptronList Perceptrons { get; }
 		public int CountPerceptrons => Perceptrons.Count;
+		public int CountConnections => Connections.Count;
 
 		public Layer(int leftPerceptrons, int rightPerceptrons)
 		{
@@ -30,11 +31,6 @@ namespace Source.NeuralNetworks.Layers
 		public bool HasConnection(int from, int to)
 		{
 			return Connections.ContainsKey(from, to);
-		}
-
-		public int Count()
-		{
-			return Connections.Count();
 		}
 
 		public Perceptron Perceptron(int index)

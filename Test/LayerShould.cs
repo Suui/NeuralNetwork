@@ -20,7 +20,7 @@ namespace Test
 		[Test]
 		public void have_8_connections_when_built_from_2_to_4()
 		{
-			Layer.Count().Should().Be(8);
+			Layer.CountConnections.Should().Be(8);
 		}
 
 		[Test]
