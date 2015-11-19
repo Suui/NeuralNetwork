@@ -15,12 +15,12 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 		{
 			PreviousLayer = previousLayer;
 			Index = index;
-			Threshold = 1.0;
+			Threshold = new ThresholdRandomizer().GetThreshold();
 		}
 
 		public virtual double ExitValue()
 		{
-			double x = Threshold + Summation(1, PreviousLayer.CountPerceptrons);
+			var x = Threshold + Summation(1, PreviousLayer.CountPerceptrons);
 
 			return Sigmoide(x);
 		}

@@ -1,6 +1,8 @@
 ﻿using FluentAssertions;
+using NSubstitute;
 using NUnit.Framework;
 using Source.NeuralNetworks;
+using Source.NeuralNetworks.Layers.Perceptrons;
 
 
 namespace Test
@@ -21,8 +23,10 @@ namespace Test
 		}
 
 		[Test]
-		public void return_an_exit_value_of_0_when_it_has_one_hidden_layer_with_one_perceptron()
+		public void return_an_exit_value_of_1_when_perceptrons_have_a_very_high_threshold()
 		{
+			var thresholdRandomizer = Substitute.For<ThresholdRandomizer>();
+			thresholdRandomizer.GetThreshold().Returns(9999);
 			var neuralNetwork = new NeuralNetworkBuilder().Build()
 														  .WithLayer(1).From(1).To(1)
 														  .WithLayer(2).From(1).To(1)
@@ -30,7 +34,7 @@ namespace Test
 
 			neuralNetwork.Execute();
 
-			neuralNetwork.ExitValues[0].Should().Be(0.0);
+			neuralNetwork.ExitValues[0].Should().Be(1.0);
 		}
 	}
 }
