@@ -1,11 +1,14 @@
 using System.Collections.Generic;
+using System.Linq;
+using Source.Layers.Perceptrons;
 
 
 namespace Source.Layers
 {
 	public class LayerDictionary
 	{
-		private Dictionary<int, Layer> Layers { get; set; }
+		private Dictionary<int, Layer> Layers { get; }
+		private Layer _lastLayer;
 
 		public LayerDictionary()
 		{
@@ -20,6 +23,12 @@ namespace Source.Layers
 		public void Add(int index, Layer layer)
 		{
 			Layers.Add(index, layer);
+			_lastLayer = layer;
+		}
+
+		public List<double> GetLastLayerExitValues()
+		{
+			return (from Perceptron perceptron in _lastLayer.Perceptrons select perceptron.ExitValue()).ToList();
 		}
 
 		public Layer this[int index] => Layers[index];

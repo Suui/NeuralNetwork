@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 
 
 namespace Source.Layers.Perceptrons
 {
-	public class PerceptronList
+	public class PerceptronList : IEnumerable
 	{
 		private readonly List<Perceptron> _perceptrons;
 
@@ -13,5 +14,10 @@ namespace Source.Layers.Perceptrons
 		}
 
 		public Perceptron this[int index] => _perceptrons[index];
+
+		public IEnumerator GetEnumerator()
+		{
+			return _perceptrons.GetEnumerator();
+		}
 	}
 }

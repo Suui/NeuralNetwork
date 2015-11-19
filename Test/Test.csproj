@@ -71,6 +71,7 @@
     <Compile Include="TestLayerDictionaryBuilder.cs" />
     <Compile Include="LayerDictionaryShould.cs" />
     <Compile Include="LayerShould.cs" />
+    <Compile Include="NeuralNetworkShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

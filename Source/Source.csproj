@@ -50,6 +50,9 @@
     <Compile Include="Layers\LayerDictionary.cs" />
     <Compile Include="Layers\Perceptrons\PerceptronList.cs" />
     <Compile Include="Layers\Perceptrons\PerceptronListBuilder.cs" />
+    <Compile Include="NeuralNetwork.cs" />
+    <Compile Include="NeuralNetworkBuilder.cs" />
+    <Compile Include="NeuralNetworkFactory.cs" />
     <Compile Include="Layers\Perceptrons\Perceptron.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
