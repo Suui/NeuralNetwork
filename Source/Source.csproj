@@ -48,7 +48,6 @@
     <Compile Include="Layers\Connections\ConnectionListBuilder.cs" />
     <Compile Include="Layers\Layer.cs" />
     <Compile Include="Layers\LayerDictionary.cs" />
-    <Compile Include="Layers\LayerDictionaryBuilder.cs" />
     <Compile Include="Layers\Perceptrons\PerceptronList.cs" />
     <Compile Include="Layers\Perceptrons\PerceptronListBuilder.cs" />
     <Compile Include="Layers\Perceptrons\Perceptron.cs" />
