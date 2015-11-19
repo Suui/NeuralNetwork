@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Collections.Generic;
+using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
 using Source.NeuralNetworks;
@@ -38,7 +39,7 @@ namespace Test
 		}
 
 		[Test]
-		public void return_an_exit_value_of_0_when_perceptrons_have_a_ver_low_threshold()
+		public void return_an_exit_value_of_0_when_perceptrons_have_a_very_low_threshold()
 		{
 			var thresholdRandomizer = Substitute.For<ThresholdRandomizer>();
 			thresholdRandomizer.GetThreshold().Returns(-9999);
@@ -50,6 +51,21 @@ namespace Test
 			neuralNetwork.Execute();
 
 			neuralNetwork.ExitValues[0].Should().Be(0.0);
+		}
+
+		[Test]
+		public void return_the_correct_exit_with_the_given_entry_values()
+		{
+			var thresholdRandomizer = Substitute.For<ThresholdRandomizer>();
+			thresholdRandomizer.GetThreshold().Returns(0);
+			var neuralNetwork = new NeuralNetworkBuilder().Build()
+														  .WithLayer(1).From(1).To(1)
+														  .Get();
+
+			neuralNetwork.EntryValues = new List<double> {1.0};
+			neuralNetwork.Execute();
+
+			neuralNetwork.ExitValues[0].Should().Be(0.5);
 		}
 	}
 }

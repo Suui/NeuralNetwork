@@ -43,7 +43,7 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 
 	public class EntryPerceptron : Perceptron
 	{
-		private double EntryValue { get; set; }
+		public double EntryValue { get; set; }
 
 		public EntryPerceptron(int index)
 		{
