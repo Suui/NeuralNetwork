@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace Source.Layers.Perceptrons
+namespace Source.NeuralNetworks.Layers.Perceptrons
 {
 	public class PerceptronList : IEnumerable
 	{

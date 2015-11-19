@@ -1,6 +1,7 @@
-﻿using Source.Layers;
+﻿using Source.NeuralNetworks.Layers;
 
-namespace Source
+
+namespace Source.NeuralNetworks
 {
 	public class NeuralNetworkFactory
 	{

@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
-using Source;
+using Source.NeuralNetworks;
 
 
 namespace Test

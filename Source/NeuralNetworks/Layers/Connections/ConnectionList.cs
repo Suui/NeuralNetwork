@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Source.Layers.Connections
+
+namespace Source.NeuralNetworks.Layers.Connections
 {
 	public class ConnectionList
 	{

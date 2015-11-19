@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using FluentAssertions;
 using NUnit.Framework;
-using Source.Layers;
+using Source.NeuralNetworks.Layers;
 
 
 namespace Test

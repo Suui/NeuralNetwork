@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using Source.Layers.Perceptrons;
+using Source.NeuralNetworks.Layers.Perceptrons;
 
 
-namespace Source.Layers
+namespace Source.NeuralNetworks.Layers
 {
 	public class LayerDictionary
 	{

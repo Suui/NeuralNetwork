@@ -1,8 +1,8 @@
-﻿using Source.Layers.Connections;
-using Source.Layers.Perceptrons;
+﻿using Source.NeuralNetworks.Layers.Connections;
+using Source.NeuralNetworks.Layers.Perceptrons;
 
 
-namespace Source.Layers
+namespace Source.NeuralNetworks.Layers
 {
 	public class Layer
 	{

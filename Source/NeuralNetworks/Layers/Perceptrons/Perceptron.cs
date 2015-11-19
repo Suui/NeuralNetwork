@@ -1,6 +1,7 @@
 using System;
 
-namespace Source.Layers.Perceptrons
+
+namespace Source.NeuralNetworks.Layers.Perceptrons
 {
 	public class Perceptron
 	{
