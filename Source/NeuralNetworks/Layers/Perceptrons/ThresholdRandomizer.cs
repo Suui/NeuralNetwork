@@ -1,5 +1,6 @@
 using System;
 
+
 namespace Source.NeuralNetworks.Layers.Perceptrons
 {
 	public class ThresholdRandomizer
