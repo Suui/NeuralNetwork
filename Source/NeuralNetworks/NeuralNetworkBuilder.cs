@@ -15,9 +15,10 @@ namespace Source.NeuralNetworks
 			_layerDictionary = new LayerDictionary();
 		}
 
-		public NeuralNetworkBuilder Build()
+		public NeuralNetwork Build()
 		{
-			return this;
+			_layerDictionary.Add(_index + 1, new Layer(_rightPerceptrons, 0, _layerDictionary[_index]));
+			return new NeuralNetwork(_layerDictionary);
 		}
 
 		public NeuralNetworkBuilder WithLayer(int index)
@@ -40,12 +41,6 @@ namespace Source.NeuralNetworks
 				_layerDictionary.HasLayer(_index - 1) ? new Layer(_leftPerceptrons, _rightPerceptrons, _layerDictionary[_index - 1])
 													  : new Layer(_leftPerceptrons, _rightPerceptrons));
 			return this;
-		}
-
-		public NeuralNetwork Get()
-		{
-			_layerDictionary.Add(_index + 1, new Layer(_rightPerceptrons, 0, _layerDictionary[_index]));
-			return new NeuralNetwork(_layerDictionary);
 		}
 	}
 }
