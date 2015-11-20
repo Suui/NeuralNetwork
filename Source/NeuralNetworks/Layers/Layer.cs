@@ -14,7 +14,7 @@ namespace Source.NeuralNetworks.Layers
 		public Layer(int leftPerceptrons, int rightPerceptrons)
 		{
 			Connections = ConnectionListBuilder.Build(leftPerceptrons, rightPerceptrons);
-			Perceptrons = PerceptronListBuilder.Build(leftPerceptrons, null);
+			Perceptrons = PerceptronListBuilder.Build(leftPerceptrons, new PerceptronProperties { IsEntryPerceptronList = true });
 		}
 
 		public Layer(int leftPerceptrons, int rightPerceptrons, PerceptronProperties perceptronProperties)
