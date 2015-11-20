@@ -11,13 +11,6 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 
 		protected Perceptron() {}
 
-		public Perceptron(int index, Layer previousLayer)
-		{
-			PreviousLayer = previousLayer;
-			Index = index;
-			Threshold = new ThresholdRandomizer().GetThreshold();
-		}
-
 		public Perceptron(int index, PerceptronProperties perceptronProperties)
 		{
 			Index = index;
