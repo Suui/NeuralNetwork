@@ -1,11 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 
 namespace Source.NeuralNetworks.Layers.Perceptrons
 {
 	public class PerceptronListBuilder
 	{
+		public static PerceptronList Build(int numberOfPerceptrons, PerceptronProperties perceptronProperties)
+		{
+			return perceptronProperties.IsEntryPerceptronList ? EntryPerceptronList(numberOfPerceptrons)
+															  : PerceptronList(numberOfPerceptrons, perceptronProperties);
+		}
+
 		private static PerceptronList EntryPerceptronList(int numberOfPerceptrons)
 		{
 			var perceptrons = new List<Perceptron>();
@@ -14,12 +19,6 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 				perceptrons.Add(new EntryPerceptron(i));
 
 			return new PerceptronList(perceptrons);
-		}
-
-		public static PerceptronList Build(int numberOfPerceptrons, PerceptronProperties perceptronProperties)
-		{
-			return perceptronProperties.IsEntryPerceptronList ? EntryPerceptronList(numberOfPerceptrons)
-															  : PerceptronList(numberOfPerceptrons, perceptronProperties);
 		}
 
 		private static PerceptronList PerceptronList(int numberOfPerceptrons, PerceptronProperties perceptronProperties)
