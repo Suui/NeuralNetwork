@@ -18,6 +18,13 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 			Threshold = new ThresholdRandomizer().GetThreshold();
 		}
 
+		public Perceptron(int index, PerceptronProperties perceptronProperties)
+		{
+			Index = index;
+			PreviousLayer = perceptronProperties.PreviousLayer;
+			Threshold = perceptronProperties.ThresholdGenerator.Generate();
+		}
+
 		public virtual double ExitValue()
 		{
 			var x = Threshold + Summation(1, PreviousLayer.CountPerceptrons);
