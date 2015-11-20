@@ -1,4 +1,5 @@
 ﻿using Source.NeuralNetworks.Layers;
+using Source.NeuralNetworks.Layers.Perceptrons;
 
 
 namespace Source.NeuralNetworks
@@ -6,18 +7,28 @@ namespace Source.NeuralNetworks
 	public class NeuralNetworkBuilder
 	{
 		private readonly LayerDictionary _layerDictionary;
+
+		private PerceptronProperties _perceptronProperties;
 		private int _index;
 		private int _leftPerceptrons;
 		private int _rightPerceptrons;
+
 
 		public NeuralNetworkBuilder()
 		{
 			_layerDictionary = new LayerDictionary();
 		}
 
+		public NeuralNetworkBuilder(PerceptronProperties perceptronProperties)
+		{
+			_layerDictionary = new LayerDictionary();
+			_perceptronProperties = perceptronProperties;
+		}
+
 		public NeuralNetwork Build()
 		{
-			_layerDictionary.Add(_index + 1, new Layer(_rightPerceptrons, 0, _layerDictionary[_index]));
+			_perceptronProperties.PreviousLayer = _layerDictionary[_index];
+			_layerDictionary.Add(_index + 1, new Layer(_rightPerceptrons, 0, _perceptronProperties));
 			return new NeuralNetwork(_layerDictionary);
 		}
 
@@ -37,9 +48,16 @@ namespace Source.NeuralNetworks
 		{
 			_rightPerceptrons = rightPerceptrons;
 
-			_layerDictionary.Add(_index,
-				_layerDictionary.HasLayer(_index - 1) ? new Layer(_leftPerceptrons, _rightPerceptrons, _layerDictionary[_index - 1])
-													  : new Layer(_leftPerceptrons, _rightPerceptrons));
+			if (_layerDictionary.HasLayer(_index - 1))
+			{
+				_perceptronProperties.PreviousLayer = _layerDictionary[_index - 1];
+				_layerDictionary.Add(_index, new Layer(_leftPerceptrons, _rightPerceptrons, _perceptronProperties));
+			}
+			else
+			{
+				_layerDictionary.Add(_index, new Layer(_leftPerceptrons, _rightPerceptrons));
+			}
+
 			return this;
 		}
 	}
