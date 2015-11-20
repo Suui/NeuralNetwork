@@ -44,7 +44,7 @@ namespace Source.NeuralNetworks
 
 		public NeuralNetwork Get()
 		{
-			_layerDictionary.Add(_index + 1, new Layer(_rightPerceptrons, 0, _layerDictionary[_index - 1]));
+			_layerDictionary.Add(_index + 1, new Layer(_rightPerceptrons, 0, _layerDictionary[_index]));
 			return new NeuralNetwork(_layerDictionary);
 		}
 	}
