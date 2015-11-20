@@ -48,8 +48,10 @@
     <Compile Include="NeuralNetworks\Layers\Connections\ConnectionListBuilder.cs" />
     <Compile Include="NeuralNetworks\Layers\Layer.cs" />
     <Compile Include="NeuralNetworks\Layers\LayerDictionary.cs" />
+    <Compile Include="NeuralNetworks\Thresholds\DelimitedThreshold.cs" />
     <Compile Include="NeuralNetworks\Layers\Perceptrons\PerceptronList.cs" />
     <Compile Include="NeuralNetworks\Layers\Perceptrons\PerceptronListBuilder.cs" />
+    <Compile Include="NeuralNetworks\Thresholds\ThresholdGenerator.cs" />
     <Compile Include="NeuralNetworks\Layers\Perceptrons\ThresholdRandomizer.cs" />
     <Compile Include="NeuralNetworks\NeuralNetwork.cs" />
     <Compile Include="NeuralNetworks\NeuralNetworkBuilder.cs" />
