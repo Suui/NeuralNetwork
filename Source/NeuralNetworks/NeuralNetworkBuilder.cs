@@ -21,6 +21,7 @@ namespace Source.NeuralNetworks
 
 		public NeuralNetwork Build()
 		{
+			_perceptronProperties.IsEntryPerceptronList = false;
 			_perceptronProperties.PreviousLayer = _layerDictionary[_index];
 			_layerDictionary.Add(_index + 1, new Layer(_rightPerceptrons, 0, _perceptronProperties));
 			return new NeuralNetwork(_layerDictionary);

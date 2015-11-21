@@ -49,7 +49,7 @@ namespace Test
 		}
 
 		[Test]
-		public void return_the_correct_exit_with_the_given_entry_values()
+		public void return_0_point_5_when_it_has_no_hidden_layers_entry_value_is_1_threshold_is_0_and_weight_is_0()
 		{
 			_thresholdGenerator.Generate().Returns(0.0);
 			var neuralNetwork = new NeuralNetworkBuilder(new PerceptronProperties(_thresholdGenerator))
