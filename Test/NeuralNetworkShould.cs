@@ -49,14 +49,14 @@ namespace Test
 		}
 
 		[Test]
-		public void return_0_point_5_when_it_has_no_hidden_layers_entry_value_is_1_threshold_is_0_and_weight_is_0()
+		public void return_0_point_5_when_it_has_no_hidden_layers_entry_value_is_0_threshold_is_0_and_weight_is_1()
 		{
 			_thresholdGenerator.Generate().Returns(0.0);
 			var neuralNetwork = new NeuralNetworkBuilder(new PerceptronProperties(_thresholdGenerator))
 								.WithLayer(1).From(1).To(1)
 								.Build();
 
-			neuralNetwork.EntryValues = new List<double> {1.0};
+			neuralNetwork.EntryValues = new List<double> { 0.0 };
 			neuralNetwork.Execute();
 
 			neuralNetwork.ExitValues[0].Should().Be(0.5);
