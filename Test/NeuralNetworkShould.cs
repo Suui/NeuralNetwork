@@ -21,19 +21,6 @@ namespace Test
 		}
 
 		[Test]
-		public void return_an_exit_value_of_0_by_default_when_it_has_no_hidden_layers()
-		{
-			_thresholdGenerator.Generate().Returns(0.0);
-			var neuralNetwork = new NeuralNetworkBuilder(new PerceptronProperties(_thresholdGenerator))
-								.WithLayer(1).From(1).To(1)
-								.Build();
-
-			neuralNetwork.Execute();
-
-			neuralNetwork.ExitValues[0].Should().Be(0.0);
-		}
-
-		[Test]
 		public void return_an_exit_value_of_1_when_perceptrons_have_a_very_high_threshold()
 		{
 			_thresholdGenerator.Generate().Returns(9999.0);
