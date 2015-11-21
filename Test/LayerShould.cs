@@ -1,7 +1,10 @@
 ﻿using System;
 using FluentAssertions;
+using NSubstitute;
 using NUnit.Framework;
 using Source.NeuralNetworks.Layers;
+using Source.NeuralNetworks.Layers.Perceptrons;
+using Source.NeuralNetworks.Thresholds;
 
 
 namespace Test
@@ -14,7 +17,8 @@ namespace Test
 		[SetUp]
 		public void given_a_layer_from_2_to_4()
 		{
-			Layer = new Layer(2, 4);
+			var thresholdGenerator = Substitute.For<DelimitedThreshold>(-9999.0, 9999.0);
+			Layer = new Layer(2, 4, new PerceptronProperties(thresholdGenerator));
 		}
 
 		[Test]
@@ -48,7 +52,9 @@ namespace Test
 		public void get_a_perceptron_with_correct_indexes()
 		{
 			Assert.Throws<ArgumentOutOfRangeException>(() => Layer.Perceptron(0));
-			Layer.Perceptron(1).ExitValue().Should().Be(0.0);
+			Layer.Perceptron(1).Should().NotBeNull();
+			Layer.Perceptron(2).Should().NotBeNull();
+			Assert.Throws<ArgumentOutOfRangeException>(() => Layer.Perceptron(3));
 		}
 	}
 }
