@@ -29,7 +29,7 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 		{
 			var result = 0.0;
 
-			for (var j = from; j < to; j++)
+			for (var j = from; j <= to; j++)
 				result += PreviousLayer.Perceptron(j).ExitValue() * PreviousLayer.Connection(j, Index).Weight;
 
 			return result;

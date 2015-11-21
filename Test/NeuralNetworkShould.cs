@@ -61,5 +61,19 @@ namespace Test
 
 			neuralNetwork.ExitValues[0].Should().Be(0.5);
 		}
+
+		[Test]
+		public void return_0_point_26894142_when_it_has_no_hidden_layers_entry_values_are_2_and_4_threshold_is_minus7_and_weights_are_1()
+		{
+			_thresholdGenerator.Generate().Returns(-7.0);
+			var neuralNetwork = new NeuralNetworkBuilder(new PerceptronProperties(_thresholdGenerator))
+								.WithLayer(1).From(2).To(1)
+								.Build();
+
+			neuralNetwork.EntryValues = new List<double> { 2.0, 4.0 };
+			neuralNetwork.Execute();
+
+			neuralNetwork.ExitValues[0].Should().BeApproximately(0.26894142, 0.00000001);
+		}
 	}
 }

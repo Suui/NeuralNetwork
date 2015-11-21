@@ -35,11 +35,13 @@ namespace Source.NeuralNetworks.Layers
 
 		public void SetEntryPerceptrons(List<double> entryValues)
 		{
+			var index = 0;
 			foreach (var perceptron in Layers[1].Perceptrons)
 			{
 				var entryPerceptron = perceptron as EntryPerceptron;
 				if (entryPerceptron != null)
-					entryPerceptron.EntryValue = entryValues[0];
+					entryPerceptron.EntryValue = entryValues[index];
+				index += 1;
 			}
 		}
 	}
