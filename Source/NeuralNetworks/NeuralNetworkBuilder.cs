@@ -6,18 +6,12 @@ namespace Source.NeuralNetworks
 {
 	public class NeuralNetworkBuilder
 	{
+		private readonly PerceptronProperties _perceptronProperties;
 		private readonly LayerDictionary _layerDictionary;
 
-		private PerceptronProperties _perceptronProperties;
 		private int _index;
 		private int _leftPerceptrons;
 		private int _rightPerceptrons;
-
-
-		public NeuralNetworkBuilder()
-		{
-			_layerDictionary = new LayerDictionary();
-		}
 
 		public NeuralNetworkBuilder(PerceptronProperties perceptronProperties)
 		{
@@ -50,6 +44,7 @@ namespace Source.NeuralNetworks
 
 			if (_layerDictionary.HasLayer(_index - 1))
 			{
+				_perceptronProperties.IsEntryPerceptronList = false;
 				_perceptronProperties.PreviousLayer = _layerDictionary[_index - 1];
 				_layerDictionary.Add(_index, new Layer(_leftPerceptrons, _rightPerceptrons, _perceptronProperties));
 			}
