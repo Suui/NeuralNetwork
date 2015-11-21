@@ -55,7 +55,8 @@ namespace Source.NeuralNetworks
 			}
 			else
 			{
-				_layerDictionary.Add(_index, new Layer(_leftPerceptrons, _rightPerceptrons));
+				_perceptronProperties.IsEntryPerceptronList = true;
+				_layerDictionary.Add(_index, new Layer(_leftPerceptrons, _rightPerceptrons, _perceptronProperties));
 			}
 
 			return this;
