@@ -6,16 +6,10 @@ namespace Source.NeuralNetworks.Layers
 {
 	public class Layer
 	{
-		public ConnectionList Connections { get; }
+		private ConnectionList Connections { get; }
 		public PerceptronList Perceptrons { get; }
 		public int CountPerceptrons => Perceptrons.Count;
 		public int CountConnections => Connections.Count;
-
-		public Layer(int leftPerceptrons, int rightPerceptrons)
-		{
-			Connections = ConnectionListBuilder.Build(leftPerceptrons, rightPerceptrons);
-			Perceptrons = PerceptronListBuilder.Build(leftPerceptrons, new PerceptronProperties { IsEntryPerceptronList = true });
-		}
 
 		public Layer(int leftPerceptrons, int rightPerceptrons, PerceptronProperties perceptronProperties)
 		{
