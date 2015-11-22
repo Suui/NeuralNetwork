@@ -69,7 +69,7 @@ namespace Source.NeuralNetworks
 			{
 				_perceptronProperties.IsEntryPerceptronList = true;
 				_layerProperties.PerceptronProperties.IsEntryPerceptronList = true;
-				_layerDictionary.Add(_index, new Layer(_leftPerceptrons, _rightPerceptrons, _connectionProperties, _perceptronProperties));
+				_layerDictionary.Add(_index, new Layer(_layerProperties));
 			}
 
 			return this;
