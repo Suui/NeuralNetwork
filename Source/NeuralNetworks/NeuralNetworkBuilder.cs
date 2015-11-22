@@ -32,7 +32,7 @@ namespace Source.NeuralNetworks
 		{
 			_perceptronProperties.IsEntryPerceptronList = false;
 			_perceptronProperties.PreviousLayer = _layerDictionary[_index];
-			_layerDictionary.Add(_index + 1, new Layer(_rightPerceptrons, 0, _perceptronProperties));
+			_layerDictionary.Add(_index + 1, new Layer(_rightPerceptrons, 0, _connectionProperties, _perceptronProperties));
 			return new NeuralNetwork(_layerDictionary);
 		}
 
@@ -56,12 +56,12 @@ namespace Source.NeuralNetworks
 			{
 				_perceptronProperties.IsEntryPerceptronList = false;
 				_perceptronProperties.PreviousLayer = _layerDictionary[_index - 1];
-				_layerDictionary.Add(_index, new Layer(_leftPerceptrons, _rightPerceptrons, _perceptronProperties));
+				_layerDictionary.Add(_index, new Layer(_leftPerceptrons, _rightPerceptrons, _connectionProperties, _perceptronProperties));
 			}
 			else
 			{
 				_perceptronProperties.IsEntryPerceptronList = true;
-				_layerDictionary.Add(_index, new Layer(_leftPerceptrons, _rightPerceptrons, _perceptronProperties));
+				_layerDictionary.Add(_index, new Layer(_leftPerceptrons, _rightPerceptrons, _connectionProperties, _perceptronProperties));
 			}
 
 			return this;
