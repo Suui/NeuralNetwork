@@ -17,6 +17,11 @@ namespace Source.NeuralNetworks.Layers
 			Perceptrons = PerceptronListBuilder.Build(leftPerceptrons, perceptronProperties);
 		}
 
+		public Layer(LayerProperties layerProperties) 
+			: this(layerProperties.LeftPerceptrons, layerProperties.RightPerceptrons, layerProperties.ConnectionProperties, layerProperties.PerceptronProperties)
+		{
+		}
+
 		public Connection Connection(int from, int to)
 		{
 			return Connections[from, to];

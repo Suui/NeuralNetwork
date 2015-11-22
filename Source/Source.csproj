@@ -49,6 +49,7 @@
     <Compile Include="NeuralNetworks\Layers\Connections\ConnectionListBuilder.cs" />
     <Compile Include="NeuralNetworks\Layers\Layer.cs" />
     <Compile Include="NeuralNetworks\Layers\LayerDictionary.cs" />
+    <Compile Include="NeuralNetworks\Layers\LayerProperties.cs" />
     <Compile Include="NeuralNetworks\NumberGenerators\DelimitedRandom.cs" />
     <Compile Include="NeuralNetworks\Layers\Perceptrons\PerceptronProperties.cs" />
     <Compile Include="NeuralNetworks\Layers\Perceptrons\PerceptronList.cs" />
