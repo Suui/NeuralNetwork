@@ -17,7 +17,7 @@ namespace Test
 		[SetUp]
 		public void given_a_threshold_generator()
 		{
-			_thresholdGenerator = Substitute.For<DelimitedThreshold>(0, 0);
+			_thresholdGenerator = Substitute.For<DelimitedGenerator>(0, 0);
 		}
 
 		[Test]
