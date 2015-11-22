@@ -11,12 +11,6 @@ namespace Source.NeuralNetworks.Layers
 		public int CountPerceptrons => Perceptrons.Count;
 		public int CountConnections => Connections.Count;
 
-		public Layer(int leftPerceptrons, int rightPerceptrons, PerceptronProperties perceptronProperties)
-		{
-			Connections = ConnectionListBuilder.Build(leftPerceptrons, rightPerceptrons);
-			Perceptrons = PerceptronListBuilder.Build(leftPerceptrons, perceptronProperties);
-		}
-
 		public Layer(int leftPerceptrons, int rightPerceptrons, ConnectionProperties connectionProperties, PerceptronProperties perceptronProperties)
 		{
 			Connections = ConnectionListBuilder.Build(leftPerceptrons, rightPerceptrons, connectionProperties);
