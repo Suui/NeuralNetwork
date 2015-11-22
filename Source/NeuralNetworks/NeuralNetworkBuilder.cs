@@ -1,4 +1,5 @@
 ﻿using Source.NeuralNetworks.Layers;
+using Source.NeuralNetworks.Layers.Connections;
 using Source.NeuralNetworks.Layers.Perceptrons;
 
 
@@ -6,6 +7,7 @@ namespace Source.NeuralNetworks
 {
 	public class NeuralNetworkBuilder
 	{
+		private readonly ConnectionProperties _connectionProperties;
 		private readonly PerceptronProperties _perceptronProperties;
 		private readonly LayerDictionary _layerDictionary;
 
@@ -17,6 +19,13 @@ namespace Source.NeuralNetworks
 		{
 			_layerDictionary = new LayerDictionary();
 			_perceptronProperties = perceptronProperties;
+		}
+
+		public NeuralNetworkBuilder(ConnectionProperties connectionProperties, PerceptronProperties perceptronProperties)
+		{
+			_layerDictionary = new LayerDictionary();
+			_perceptronProperties = perceptronProperties;
+			_connectionProperties = connectionProperties;
 		}
 
 		public NeuralNetwork Build()

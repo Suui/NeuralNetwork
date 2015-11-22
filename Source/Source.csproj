@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NeuralNetworks\Layers\Connections\ConnectionProperties.cs" />
     <Compile Include="NeuralNetworks\Layers\Connections\Connection.cs" />
     <Compile Include="NeuralNetworks\Layers\Connections\ConnectionList.cs" />
     <Compile Include="NeuralNetworks\Layers\Connections\ConnectionListBuilder.cs" />
