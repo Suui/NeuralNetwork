@@ -18,7 +18,7 @@ namespace Source.NumberGenerators
 
 		public override double Generate()
 		{
-			throw new System.NotImplementedException();
+			return 0.0;
 		}
 	}
 }
