@@ -15,12 +15,6 @@ namespace Source.NeuralNetworks
 		private int _leftPerceptrons;
 		private int _rightPerceptrons;
 
-		public NeuralNetworkBuilder(PerceptronProperties perceptronProperties)
-		{
-			_layerDictionary = new LayerDictionary();
-			_perceptronProperties = perceptronProperties;
-		}
-
 		public NeuralNetworkBuilder(ConnectionProperties connectionProperties, PerceptronProperties perceptronProperties)
 		{
 			_layerDictionary = new LayerDictionary();
