@@ -20,7 +20,7 @@ namespace Source.NumberGenerators
 
 		public override double Generate()
 		{
-			return _minValue + _maxValue - _minValue;
+			return _random.NextDouble() * (_maxValue - _minValue) + _minValue;
 		}
 	}
 }
