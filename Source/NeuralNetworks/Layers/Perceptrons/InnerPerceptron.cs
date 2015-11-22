@@ -3,7 +3,7 @@ using Source.Formulas;
 
 namespace Source.NeuralNetworks.Layers.Perceptrons
 {
-	public class InnerPerceptron : EntryPerceptron
+	public class InnerPerceptron : Perceptron
 	{
 		private Layer PreviousLayer { get; }
 		private Formula Formula { get; }
@@ -35,12 +35,12 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 		}
 	}
 
-	public class EntryPerceptron
+	public class Perceptron
 	{
 		protected int Index { get; set; }
 		public double EntryValue { get; set; }
 
-		public EntryPerceptron(int index)
+		public Perceptron(int index)
 		{
 			Index = index;
 			EntryValue = 0.0;

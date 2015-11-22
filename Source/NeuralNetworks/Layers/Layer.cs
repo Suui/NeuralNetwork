@@ -27,7 +27,7 @@ namespace Source.NeuralNetworks.Layers
 			return Connections.ContainsKey(from, to);
 		}
 
-		public EntryPerceptron Perceptron(int index)
+		public Perceptron Perceptron(int index)
 		{
 			return Perceptrons[index - 1];
 		}

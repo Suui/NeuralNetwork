@@ -36,7 +36,7 @@ namespace Source.NeuralNetworks.Layers
 		public void SetEntryPerceptrons(List<double> entryValues)
 		{
 			var index = 0;
-			foreach (EntryPerceptron perceptron in Layers[1].Perceptrons)
+			foreach (Perceptron perceptron in Layers[1].Perceptrons)
 			{
 				perceptron.EntryValue = entryValues[index];
 				index += 1;
