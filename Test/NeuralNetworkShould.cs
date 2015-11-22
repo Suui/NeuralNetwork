@@ -12,7 +12,7 @@ namespace Test
 	[TestFixture]
 	public class NeuralNetworkShould
 	{
-		private ThresholdGenerator _thresholdGenerator;
+		private RandomGenerator _thresholdGenerator;
 
 		[SetUp]
 		public void given_a_threshold_generator()

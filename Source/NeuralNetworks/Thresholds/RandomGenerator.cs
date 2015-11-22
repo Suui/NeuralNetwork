@@ -1,6 +1,6 @@
 namespace Source.NeuralNetworks.Thresholds
 {
-	public abstract class ThresholdGenerator
+	public abstract class RandomGenerator
 	{
 		public abstract double Generate();
 	}
