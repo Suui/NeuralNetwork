@@ -3,6 +3,7 @@ using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
 using Source.NeuralNetworks.Layers;
+using Source.NeuralNetworks.Layers.Connections;
 using Source.NeuralNetworks.Layers.Perceptrons;
 using Source.NeuralNetworks.NumberGenerators;
 
@@ -17,8 +18,10 @@ namespace Test
 		[SetUp]
 		public void given_a_layer_from_2_to_4()
 		{
-			var thresholdGenerator = Substitute.For<DelimitedRandom>(-9999.0, 9999.0);
-			Layer = new Layer(2, 4, new PerceptronProperties(thresholdGenerator));
+			var thresholdGenerator = Substitute.For<DelimitedRandom>(0, 0);
+			var weightGenerator = Substitute.For<DelimitedRandom>(0, 0);
+			weightGenerator.Generate().Returns(1.0);
+			Layer = new Layer(2, 4, new ConnectionProperties(weightGenerator), new PerceptronProperties(thresholdGenerator));
 		}
 
 		[Test]
@@ -37,6 +40,7 @@ namespace Test
 		[Test]
 		public void return_the_weight_of_a_connection()
 		{
+
 			Layer.Connection(1, 1).Weight.Should().Be(1.0);
 		}
 
