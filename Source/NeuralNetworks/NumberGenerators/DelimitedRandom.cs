@@ -1,9 +1,9 @@
 using System;
 
 
-namespace Source.NeuralNetworks.Thresholds
+namespace Source.NeuralNetworks.NumberGenerators
 {
-	public class DelimitedRandom : RandomGenerator
+	public class DelimitedRandom : NumberGenerator
 	{
 		private static Random _random;
 		private readonly double _minValue;
