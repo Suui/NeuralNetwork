@@ -13,7 +13,7 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 
 		private static PerceptronList EntryPerceptronList(int numberOfPerceptrons)
 		{
-			var perceptrons = new List<Perceptron>();
+			var perceptrons = new List<InnerPerceptron>();
 
 			for (var i = 0; i < numberOfPerceptrons; i++)
 				perceptrons.Add(new EntryPerceptron(i + 1));
@@ -23,10 +23,10 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 
 		private static PerceptronList PerceptronList(int numberOfPerceptrons, PerceptronProperties perceptronProperties)
 		{
-			var perceptrons = new List<Perceptron>();
+			var perceptrons = new List<InnerPerceptron>();
 
 			for (var i = 0; i < numberOfPerceptrons; i++)
-				perceptrons.Add(new Perceptron(i + 1, perceptronProperties));
+				perceptrons.Add(new InnerPerceptron(i + 1, perceptronProperties));
 
 			return new PerceptronList(perceptrons);
 		}
