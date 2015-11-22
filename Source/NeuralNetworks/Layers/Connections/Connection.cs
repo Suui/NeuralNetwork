@@ -12,5 +12,12 @@ namespace Source.NeuralNetworks.Layers.Connections
 			To = to;
 			Weight = 1.0;
 		}
+
+		public Connection(int from, int to, ConnectionProperties connectionProperties)
+		{
+			From = from;
+			To = to;
+			Weight = connectionProperties.WeightGenerator.Generate();
+		}
 	}
 }
