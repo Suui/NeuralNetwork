@@ -17,7 +17,7 @@ namespace Test
 		[SetUp]
 		public void given_a_layer_from_2_to_4()
 		{
-			var thresholdGenerator = Substitute.For<DelimitedGenerator>(-9999.0, 9999.0);
+			var thresholdGenerator = Substitute.For<DelimitedRandom>(-9999.0, 9999.0);
 			Layer = new Layer(2, 4, new PerceptronProperties(thresholdGenerator));
 		}
 

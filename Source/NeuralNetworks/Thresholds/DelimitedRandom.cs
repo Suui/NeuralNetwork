@@ -3,13 +3,13 @@ using System;
 
 namespace Source.NeuralNetworks.Thresholds
 {
-	public class DelimitedGenerator : RandomGenerator
+	public class DelimitedRandom : RandomGenerator
 	{
 		private static Random _random;
 		private readonly double _minValue;
 		private readonly double _maxValue;
 
-		public DelimitedGenerator(double minValue, double maxValue)
+		public DelimitedRandom(double minValue, double maxValue)
 		{
 			_random = new Random();
 			_minValue = minValue;
