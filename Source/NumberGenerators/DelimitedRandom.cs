@@ -1,7 +1,7 @@
 using System;
 
 
-namespace Source.NeuralNetworks.NumberGenerators
+namespace Source.NumberGenerators
 {
 	public class DelimitedRandom : NumberGenerator
 	{

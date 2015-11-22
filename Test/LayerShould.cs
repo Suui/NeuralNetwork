@@ -5,7 +5,7 @@ using NUnit.Framework;
 using Source.NeuralNetworks.Layers;
 using Source.NeuralNetworks.Layers.Connections;
 using Source.NeuralNetworks.Layers.Perceptrons;
-using Source.NeuralNetworks.NumberGenerators;
+using Source.NumberGenerators;
 
 
 namespace Test

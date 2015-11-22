@@ -1,5 +1,4 @@
-using Source.NeuralNetworks.NumberGenerators;
-
+using Source.NumberGenerators;
 
 namespace Source.NeuralNetworks.Layers.Connections
 {

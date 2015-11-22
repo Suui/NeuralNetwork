@@ -1,4 +1,4 @@
-namespace Source.NeuralNetworks.NumberGenerators
+namespace Source.NumberGenerators
 {
 	public abstract class NumberGenerator
 	{
