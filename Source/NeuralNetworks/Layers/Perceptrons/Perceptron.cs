@@ -1,4 +1,4 @@
-using System;
+using Source.Formulas;
 
 
 namespace Source.NeuralNetworks.Layers.Perceptrons
@@ -6,6 +6,7 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 	public class Perceptron
 	{
 		private Layer PreviousLayer { get; }
+		private Formula Formula { get; }
 		protected int Index { get; set; }
 		public double Threshold { get; set; }
 
@@ -16,13 +17,14 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 			Index = index;
 			PreviousLayer = perceptronProperties.PreviousLayer;
 			Threshold = perceptronProperties.ThresholdGenerator.Generate();
+			Formula = new Sigmoid();
 		}
 
 		public virtual double ExitValue()
 		{
 			var x = Threshold + Summation(1, PreviousLayer.CountPerceptrons);
 
-			return Sigmoide(x);
+			return Formula.CalculateFor(x);
 		}
 
 		private double Summation(int from, int to)
@@ -33,11 +35,6 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 				result += PreviousLayer.Perceptron(j).ExitValue() * PreviousLayer.Connection(j, Index).Weight;
 
 			return result;
-		}
-
-		public double Sigmoide(double x)
-		{
-			return 1 / (1 + Math.Pow(Math.E, -x));
 		}
 	}
 

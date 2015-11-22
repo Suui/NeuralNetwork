@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formulas\Sigmoid.cs" />
     <Compile Include="NeuralNetworks\Layers\Connections\ConnectionProperties.cs" />
     <Compile Include="NeuralNetworks\Layers\Connections\Connection.cs" />
     <Compile Include="NeuralNetworks\Layers\Connections\ConnectionList.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="NeuralNetworks\Layers\Layer.cs" />
     <Compile Include="NeuralNetworks\Layers\LayerDictionary.cs" />
     <Compile Include="NeuralNetworks\Layers\LayerProperties.cs" />
+    <Compile Include="Formulas\Formula.cs" />
     <Compile Include="NeuralNetworks\NumberGenerators\DelimitedRandom.cs" />
     <Compile Include="NeuralNetworks\Layers\Perceptrons\PerceptronProperties.cs" />
     <Compile Include="NeuralNetworks\Layers\Perceptrons\PerceptronList.cs" />
