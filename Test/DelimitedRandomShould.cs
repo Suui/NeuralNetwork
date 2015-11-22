@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
+using Source.Exceptions;
 using Source.NumberGenerators;
 
 
@@ -30,6 +31,12 @@ namespace Test
 			var delimitedRandom = new DelimitedRandom(-5, -5);
 
 			delimitedRandom.Generate().Should().Be(-5.0);
+		}
+
+		[Test]
+		public void throw_unvalid_delimiter_exception_if_ranges_are_wrong()
+		{
+			Assert.Throws<UnvalidDelimiterException>(() => new DelimitedRandom(5, 4));
 		}
 	}
 }

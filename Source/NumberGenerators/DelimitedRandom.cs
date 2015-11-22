@@ -1,4 +1,5 @@
 using System;
+using Source.Exceptions;
 
 
 namespace Source.NumberGenerators
@@ -11,6 +12,7 @@ namespace Source.NumberGenerators
 
 		public DelimitedRandom(double minValue, double maxValue)
 		{
+			if (minValue > maxValue) throw new UnvalidDelimiterException();
 			_random = new Random();
 			_minValue = minValue;
 			_maxValue = maxValue;
