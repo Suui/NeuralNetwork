@@ -4,7 +4,7 @@ using NSubstitute;
 using NUnit.Framework;
 using Source.NeuralNetworks;
 using Source.NeuralNetworks.Layers.Perceptrons;
-using Source.NeuralNetworks.Thresholds;
+using Source.NeuralNetworks.NumberGenerators;
 
 
 namespace Test
@@ -12,7 +12,7 @@ namespace Test
 	[TestFixture]
 	public class NeuralNetworkShould
 	{
-		private RandomGenerator _thresholdGenerator;
+		private NumberGenerator _thresholdGenerator;
 
 		[SetUp]
 		public void given_a_threshold_generator()

@@ -1,4 +1,5 @@
-using Source.NeuralNetworks.Thresholds;
+using Source.NeuralNetworks.NumberGenerators;
+
 
 namespace Source.NeuralNetworks.Layers.Perceptrons
 {

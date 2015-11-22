@@ -4,7 +4,7 @@ using NSubstitute;
 using NUnit.Framework;
 using Source.NeuralNetworks.Layers;
 using Source.NeuralNetworks.Layers.Perceptrons;
-using Source.NeuralNetworks.Thresholds;
+using Source.NeuralNetworks.NumberGenerators;
 
 
 namespace Test
