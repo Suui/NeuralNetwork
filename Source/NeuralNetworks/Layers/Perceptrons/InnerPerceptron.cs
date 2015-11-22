@@ -3,6 +3,23 @@ using Source.Formulas;
 
 namespace Source.NeuralNetworks.Layers.Perceptrons
 {
+	public class Perceptron
+	{
+		protected int Index { get; set; }
+		public double EntryValue { get; set; }
+
+		public Perceptron(int index)
+		{
+			Index = index;
+			EntryValue = 0.0;
+		}
+
+		public virtual double ExitValue()
+		{
+			return EntryValue;
+		}
+	}
+
 	public class InnerPerceptron : Perceptron
 	{
 		private Layer PreviousLayer { get; }
@@ -32,23 +49,6 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 				result += PreviousLayer.Perceptron(j).ExitValue() * PreviousLayer.Connection(j, Index).Weight;
 
 			return result;
-		}
-	}
-
-	public class Perceptron
-	{
-		protected int Index { get; set; }
-		public double EntryValue { get; set; }
-
-		public Perceptron(int index)
-		{
-			Index = index;
-			EntryValue = 0.0;
-		}
-
-		public virtual double ExitValue()
-		{
-			return EntryValue;
 		}
 	}
 }
