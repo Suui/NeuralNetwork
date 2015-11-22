@@ -6,15 +6,15 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 {
 	public class PerceptronList : IEnumerable
 	{
-		private readonly List<Perceptron> _perceptrons;
+		private readonly List<EntryPerceptron> _perceptrons;
 		public int Count => _perceptrons.Count;
 
-		public PerceptronList(List<Perceptron> perceptrons)
+		public PerceptronList(List<EntryPerceptron> perceptrons)
 		{
 			_perceptrons = perceptrons;
 		}
 
-		public Perceptron this[int index] => _perceptrons[index];
+		public EntryPerceptron this[int index] => _perceptrons[index];
 
 		public IEnumerator GetEnumerator()
 		{

@@ -3,16 +3,13 @@ using Source.Formulas;
 
 namespace Source.NeuralNetworks.Layers.Perceptrons
 {
-	public class Perceptron
+	public class Perceptron : EntryPerceptron
 	{
 		private Layer PreviousLayer { get; }
 		private Formula Formula { get; }
-		protected int Index { get; set; }
 		public double Threshold { get; set; }
 
-		protected Perceptron() {}
-
-		public Perceptron(int index, PerceptronProperties perceptronProperties)
+		public Perceptron(int index, PerceptronProperties perceptronProperties) : base(index)
 		{
 			Index = index;
 			PreviousLayer = perceptronProperties.PreviousLayer;
@@ -20,7 +17,7 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 			Formula = new Sigmoid();
 		}
 
-		public virtual double ExitValue()
+		public override double ExitValue()
 		{
 			var x = Threshold + Summation(1, PreviousLayer.CountPerceptrons);
 
@@ -38,8 +35,9 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 		}
 	}
 
-	public class EntryPerceptron : Perceptron
+	public class EntryPerceptron
 	{
+		protected int Index { get; set; }
 		public double EntryValue { get; set; }
 
 		public EntryPerceptron(int index)
@@ -48,7 +46,7 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 			EntryValue = 0.0;
 		}
 
-		public override double ExitValue()
+		public virtual double ExitValue()
 		{
 			return EntryValue;
 		}
