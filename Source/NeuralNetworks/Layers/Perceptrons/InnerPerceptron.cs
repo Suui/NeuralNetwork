@@ -3,13 +3,13 @@ using Source.Formulas;
 
 namespace Source.NeuralNetworks.Layers.Perceptrons
 {
-	public class Perceptron : EntryPerceptron
+	public class InnerPerceptron : EntryPerceptron
 	{
 		private Layer PreviousLayer { get; }
 		private Formula Formula { get; }
 		public double Threshold { get; set; }
 
-		public Perceptron(int index, PerceptronProperties perceptronProperties) : base(index)
+		public InnerPerceptron(int index, PerceptronProperties perceptronProperties) : base(index)
 		{
 			Index = index;
 			PreviousLayer = perceptronProperties.PreviousLayer;
