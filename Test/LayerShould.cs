@@ -21,7 +21,13 @@ namespace Test
 			var thresholdGenerator = Substitute.For<DelimitedRandom>(0, 0);
 			var weightGenerator = Substitute.For<DelimitedRandom>(0, 0);
 			weightGenerator.Generate().Returns(1.0);
-			Layer = new Layer(2, 4, new ConnectionProperties(weightGenerator), new PerceptronProperties(thresholdGenerator));
+			Layer = new Layer(new LayerProperties
+							  {
+							      LeftPerceptrons = 2,
+							      RightPerceptrons = 4,
+							      ConnectionProperties = new ConnectionProperties(weightGenerator),
+							      PerceptronProperties = new PerceptronProperties(thresholdGenerator)
+							  });
 		}
 
 		[Test]
