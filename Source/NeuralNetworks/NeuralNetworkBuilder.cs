@@ -63,7 +63,7 @@ namespace Source.NeuralNetworks
 				_perceptronProperties.PreviousLayer = _layerDictionary[_index - 1];
 				_layerProperties.PerceptronProperties.IsEntryPerceptronList = false;
 				_layerProperties.PerceptronProperties.PreviousLayer = _layerDictionary[_index - 1];
-				_layerDictionary.Add(_index, new Layer(_leftPerceptrons, _rightPerceptrons, _connectionProperties, _perceptronProperties));
+				_layerDictionary.Add(_index, new Layer(_layerProperties));
 			}
 			else
 			{
