@@ -28,7 +28,7 @@ namespace Source.NeuralNetworks.Layers
 
 		public List<double> GetLastLayerExitValues()
 		{
-			return (from InnerPerceptron perceptron in _lastLayer.Perceptrons select perceptron.ExitValue()).ToList();
+			return (from Perceptron perceptron in _lastLayer.Perceptrons select perceptron.ExitValue()).ToList();
 		}
 
 		public Layer this[int index] => Layers[index];

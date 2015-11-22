@@ -3,15 +3,15 @@ using System;
 
 namespace Source.NeuralNetworks.Layers.Perceptrons
 {
-	public class InnerPerceptron
+	public class Perceptron
 	{
 		private Layer PreviousLayer { get; }
 		protected int Index { get; set; }
 		public double Threshold { get; set; }
 
-		protected InnerPerceptron() {}
+		protected Perceptron() {}
 
-		public InnerPerceptron(int index, PerceptronProperties perceptronProperties)
+		public Perceptron(int index, PerceptronProperties perceptronProperties)
 		{
 			Index = index;
 			PreviousLayer = perceptronProperties.PreviousLayer;
@@ -41,7 +41,7 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 		}
 	}
 
-	public class EntryPerceptron : InnerPerceptron
+	public class EntryPerceptron : Perceptron
 	{
 		public double EntryValue { get; set; }
 
