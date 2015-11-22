@@ -23,5 +23,13 @@ namespace Test
 
 			delimitedRandom.Generate().Should().Be(5.0);
 		}
+
+		[Test]
+		public void return_n5_when_bewteen_n5_and_n5()
+		{
+			var delimitedRandom = new DelimitedRandom(-5, -5);
+
+			delimitedRandom.Generate().Should().Be(-5.0);
+		}
 	}
 }
