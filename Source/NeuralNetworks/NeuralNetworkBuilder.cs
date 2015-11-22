@@ -10,6 +10,7 @@ namespace Source.NeuralNetworks
 		private readonly ConnectionProperties _connectionProperties;
 		private readonly PerceptronProperties _perceptronProperties;
 		private readonly LayerDictionary _layerDictionary;
+		private readonly LayerProperties _layerProperties;
 
 		private int _index;
 		private int _leftPerceptrons;
@@ -20,12 +21,20 @@ namespace Source.NeuralNetworks
 			_layerDictionary = new LayerDictionary();
 			_perceptronProperties = perceptronProperties;
 			_connectionProperties = connectionProperties;
+
+			_layerProperties = new LayerProperties
+			{
+				ConnectionProperties = connectionProperties,
+				PerceptronProperties = perceptronProperties
+			};
 		}
 
 		public NeuralNetwork Build()
 		{
 			_perceptronProperties.IsEntryPerceptronList = false;
 			_perceptronProperties.PreviousLayer = _layerDictionary[_index];
+			_layerProperties.PerceptronProperties.IsEntryPerceptronList = false;
+			_layerProperties.PerceptronProperties.PreviousLayer = _layerDictionary[_index];
 			_layerDictionary.Add(_index + 1, new Layer(_rightPerceptrons, 0, _connectionProperties, _perceptronProperties));
 			return new NeuralNetwork(_layerDictionary);
 		}
@@ -39,22 +48,27 @@ namespace Source.NeuralNetworks
 		public NeuralNetworkBuilder From(int leftPerceptrons)
 		{
 			_leftPerceptrons = leftPerceptrons;
+			_layerProperties.LeftPerceptrons = leftPerceptrons;
 			return this;
 		}
 
 		public NeuralNetworkBuilder To(int rightPerceptrons)
 		{
 			_rightPerceptrons = rightPerceptrons;
+			_layerProperties.RightPerceptrons = rightPerceptrons;
 
 			if (_layerDictionary.HasLayer(_index - 1))
 			{
 				_perceptronProperties.IsEntryPerceptronList = false;
 				_perceptronProperties.PreviousLayer = _layerDictionary[_index - 1];
+				_layerProperties.PerceptronProperties.IsEntryPerceptronList = false;
+				_layerProperties.PerceptronProperties.PreviousLayer = _layerDictionary[_index - 1];
 				_layerDictionary.Add(_index, new Layer(_leftPerceptrons, _rightPerceptrons, _connectionProperties, _perceptronProperties));
 			}
 			else
 			{
 				_perceptronProperties.IsEntryPerceptronList = true;
+				_layerProperties.PerceptronProperties.IsEntryPerceptronList = true;
 				_layerDictionary.Add(_index, new Layer(_leftPerceptrons, _rightPerceptrons, _connectionProperties, _perceptronProperties));
 			}
 
