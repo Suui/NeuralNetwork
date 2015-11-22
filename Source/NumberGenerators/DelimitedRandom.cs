@@ -18,7 +18,7 @@ namespace Source.NumberGenerators
 
 		public override double Generate()
 		{
-			return 0.0;
+			return _minValue + _maxValue - _minValue;
 		}
 	}
 }
