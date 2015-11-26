@@ -26,16 +26,21 @@ namespace Source.NeuralNetworks.Layers
 			_lastLayer = layer;
 		}
 
-		public List<double> GetLastLayerExitValues()
+		public ValueList<double> GetLastLayerExitValues()
 		{
-			return (from InnerPerceptron perceptron in _lastLayer.Perceptrons select perceptron.ExitValue()).ToList();
+			var exitValues = new ValueList<double>();
+
+			foreach (Perceptron perceptron in _lastLayer.Perceptrons)
+				exitValues.Add(perceptron.ExitValue());
+
+			return exitValues;
 		}
 
 		public Layer this[int index] => Layers[index];
 
-		public void SetEntryPerceptrons(List<double> entryValues)
+		public void SetEntryPerceptrons(ValueList<double> entryValues)
 		{
-			var index = 0;
+			var index = 1;
 			foreach (Perceptron perceptron in Layers[1].Perceptrons)
 			{
 				perceptron.EntryValue = entryValues[index];

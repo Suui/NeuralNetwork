@@ -7,16 +7,16 @@ namespace Source.NeuralNetworks
 	public class NeuralNetwork
 	{
 		private LayerDictionary LayerDictionary { get; }
-		public List<double> EntryValues { get; set; }
-		public List<double> ExitValues { get; set; }
-		public List<double> ExpectedExitValues { get; set; }
+		public ValueList<double> EntryValues { get; set; }
+		public ValueList<double> ExitValues { get; set; }
+		public ValueList<double> ExpectedExitValues { get; set; }
 		private readonly double _errorCoefficient;
 
 		public NeuralNetwork(LayerDictionary layers)
 		{
 			LayerDictionary = layers;
-			EntryValues = new List<double>();
-			ExitValues = new List<double>();
+			EntryValues = new ValueList<double>();
+			ExitValues = new ValueList<double>();
 			_errorCoefficient = 0.1;
 		}
 
@@ -28,15 +28,14 @@ namespace Source.NeuralNetworks
 			ExitValues = LayerDictionary.GetLastLayerExitValues();
 		}
 
-		public double GetErrorForExit(int i)
+		public double GetErrorForExit(int index)
 		{
-			var index = i-1;
 			return -(ExpectedExitValues[index] - ExitValues[index]);
 		}
 
 		public void ExecuteBackPropagation()
 		{
-			LayerDictionary[1].Connection(1, 1).Weight -= _errorCoefficient * EntryValues[0] * ExitValues[0] * (1 - ExitValues[0]) * GetErrorForExit(1);
+			LayerDictionary[1].Connection(1, 1).Weight -= _errorCoefficient * EntryValues[1] * ExitValues[1] * (1 - ExitValues[1]) * GetErrorForExit(1);
 		}
 	}
 }

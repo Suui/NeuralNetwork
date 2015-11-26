@@ -6,6 +6,7 @@ namespace Source.NeuralNetworks
 	public class ValueList<T> : IEnumerable
 	{
 		private readonly List<T> _valueList;
+		public int Count => _valueList.Count;
 
 		public ValueList()
 		{
@@ -17,6 +18,11 @@ namespace Source.NeuralNetworks
 		public IEnumerator GetEnumerator()
 		{
 			return _valueList.GetEnumerator();
+		}
+
+		public void Add(T value)
+		{
+			_valueList.Add(value);
 		}
 	}
 }

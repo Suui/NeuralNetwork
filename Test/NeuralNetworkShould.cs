@@ -35,7 +35,7 @@ namespace Test
 
 			neuralNetwork.Execute();
 
-			neuralNetwork.ExitValues[0].Should().Be(1.0);
+			neuralNetwork.ExitValues[1].Should().Be(1.0);
 		}
 
 		[Test]
@@ -50,7 +50,7 @@ namespace Test
 
 			neuralNetwork.Execute();
 
-			neuralNetwork.ExitValues[0].Should().Be(0.0);
+			neuralNetwork.ExitValues[1].Should().Be(0.0);
 		}
 
 		[Test]
@@ -62,10 +62,10 @@ namespace Test
 								.WithLayer(1).From(1).To(1)
 								.Build();
 
-			neuralNetwork.EntryValues = new List<double> { 0.0 };
+			neuralNetwork.EntryValues = new ValueList<double> { 0.0 };
 			neuralNetwork.Execute();
 
-			neuralNetwork.ExitValues[0].Should().Be(0.5);
+			neuralNetwork.ExitValues[1].Should().Be(0.5);
 		}
 
 		[Test]
@@ -77,10 +77,10 @@ namespace Test
 								.WithLayer(1).From(2).To(1)
 								.Build();
 
-			neuralNetwork.EntryValues = new List<double> { 2.0, 4.0 };
+			neuralNetwork.EntryValues = new ValueList<double> { 2.0, 4.0 };
 			neuralNetwork.Execute();
 
-			neuralNetwork.ExitValues[0].Should().BeApproximately(0.26894142, 0.00000001);
+			neuralNetwork.ExitValues[1].Should().BeApproximately(0.26894142, 0.00000001);
 		}
 
 		[Test]
@@ -90,9 +90,9 @@ namespace Test
 								.WithLayer(1).From(1).To(1)
 								.Build();
 
-			neuralNetwork.EntryValues = new List<double> { 1.0 };
-			neuralNetwork.ExitValues = new List<double> { 0.5 };
-			neuralNetwork.ExpectedExitValues = new List<double> { 0.8 };
+			neuralNetwork.EntryValues = new ValueList<double> { 1.0 };
+			neuralNetwork.ExitValues = new ValueList<double> { 0.5 };
+			neuralNetwork.ExpectedExitValues = new ValueList<double> { 0.8 };
 
 			neuralNetwork.GetErrorForExit(1).Should().BeApproximately(-0.30000000, 0.00000001);
 		}
@@ -106,8 +106,8 @@ namespace Test
 								.WithLayer(1).From(1).To(1)
 								.Build();
 
-			neuralNetwork.EntryValues = new List<double> { 1.0 };
-			neuralNetwork.ExpectedExitValues = new List<double> { 0.2 };
+			neuralNetwork.EntryValues = new ValueList<double> { 1.0 };
+			neuralNetwork.ExpectedExitValues = new ValueList<double> { 0.2 };
 			neuralNetwork.Execute();
 
 			neuralNetwork.ExecuteBackPropagation();
