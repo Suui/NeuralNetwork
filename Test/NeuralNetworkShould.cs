@@ -97,5 +97,27 @@ namespace Test
 			neuralNetwork.GetErrorForExit(1).Should().BeApproximately(-0.30000000, 0.00000001);
 		}
 
+		[Test]
+		public void return_correct_modified_weight_for_a_single_layer()
+		{
+			_thresholdGenerator.Generate().Returns(0.0);
+			_weightGenerator.Generate().Returns(1.0);
+			var neuralNetwork = new NeuralNetworkBuilder(new ConnectionProperties(_weightGenerator), new PerceptronProperties(_thresholdGenerator))
+								.WithLayer(1).From(1).To(1)
+								.Build();
+
+			neuralNetwork.EntryValues = new List<double> { 1.0 };
+			neuralNetwork.ExpectedExitValues = new List<double> { 0.8 };
+			neuralNetwork.Execute();
+
+			neuralNetwork.ExitValues[0].Should().BeApproximately(0.73105857, 0.00000001);
+			neuralNetwork.GetErrorForExit(1).Should().BeApproximately(-0.06894142, 0.00000001);
+
+			neuralNetwork.ExecuteBackPropagation();
+			neuralNetwork.Execute();
+
+			neuralNetwork.ExitValues[0].Should().NotBe(0.73105857);
+			neuralNetwork.ExitValues[0].Should().BeApproximately(0.73105857, 0.00000001);
+		}
 	}
 }

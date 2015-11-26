@@ -31,5 +31,11 @@ namespace Source.NeuralNetworks
 			var index = i-1;
 			return -(ExpectedExitValues[index] - ExitValues[index]);
 		}
+
+		public void ExecuteBackPropagation()
+		{
+			var w = LayerDictionary[1].Connection(1, 1).Weight;
+			w = w -0.1 * EntryValues[0] * ExitValues[0] * (1 - ExitValues[0]) * GetErrorForExit(1);
+		}
 	}
 }
