@@ -107,17 +107,10 @@ namespace Test
 								.Build();
 
 			neuralNetwork.EntryValues = new List<double> { 1.0 };
-			neuralNetwork.ExpectedExitValues = new List<double> { 0.8 };
+			neuralNetwork.ExpectedExitValues = new List<double> { 0.2 };
 			neuralNetwork.Execute();
-
-			neuralNetwork.ExitValues[0].Should().BeApproximately(0.73105857, 0.00000001);
-			neuralNetwork.GetErrorForExit(1).Should().BeApproximately(-0.06894142, 0.00000001);
 
 			neuralNetwork.ExecuteBackPropagation();
-			neuralNetwork.Execute();
-
-			neuralNetwork.ExitValues[0].Should().NotBe(0.73105857);
-			neuralNetwork.ExitValues[0].Should().BeApproximately(0.73105857, 0.00000001);
 		}
 	}
 }
