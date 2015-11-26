@@ -9,6 +9,7 @@ namespace Source.NeuralNetworks
 		private LayerDictionary LayerDictionary { get; }
 		public List<double> EntryValues { get; set; }
 		public List<double> ExitValues { get; set; }
+		public List<double> ExpectedExitValues { get; set; }
 
 		public NeuralNetwork(LayerDictionary layers)
 		{
@@ -23,6 +24,12 @@ namespace Source.NeuralNetworks
 				LayerDictionary.SetEntryPerceptrons(EntryValues);
 
 			ExitValues = LayerDictionary.GetLastLayerExitValues();
+		}
+
+		public double GetErrorForExit(int i)
+		{
+			var index = i-1;
+			return -(ExpectedExitValues[index] - ExitValues[index]);
 		}
 	}
 }

@@ -82,5 +82,20 @@ namespace Test
 
 			neuralNetwork.ExitValues[0].Should().BeApproximately(0.26894142, 0.00000001);
 		}
+
+		[Test]
+		public void return_correct_error_value_for_an_exit_with_an_associated_expected_value()
+		{
+			var neuralNetwork = new NeuralNetworkBuilder(new ConnectionProperties(_weightGenerator), new PerceptronProperties(_thresholdGenerator))
+								.WithLayer(1).From(1).To(1)
+								.Build();
+
+			neuralNetwork.EntryValues = new List<double> { 1.0 };
+			neuralNetwork.ExitValues = new List<double> { 0.5 };
+			neuralNetwork.ExpectedExitValues = new List<double> { 0.8 };
+
+			neuralNetwork.GetErrorForExit(1).Should().BeApproximately(-0.30000000, 0.00000001);
+		}
+
 	}
 }
