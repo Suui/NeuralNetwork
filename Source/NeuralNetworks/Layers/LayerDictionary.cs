@@ -7,6 +7,8 @@ namespace Source.NeuralNetworks.Layers
 	public class LayerDictionary
 	{
 		private Dictionary<int, Layer> Layers { get; }
+		public int Count => Layers.Count;
+
 		private Layer _lastLayer;
 
 		public LayerDictionary()

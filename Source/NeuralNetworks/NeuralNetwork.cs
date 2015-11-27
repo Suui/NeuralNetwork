@@ -34,7 +34,24 @@ namespace Source.NeuralNetworks
 
 		public void ExecuteBackPropagation()
 		{
-			LayerDictionary[1].Connection(1, 1).Weight -= _errorCoefficient * EntryValues[1] * ExitValues[1] * (1 - ExitValues[1]) * GetErrorForExit(1);
+			for (var index = LayerDictionary.Count - 1; index >= 1; index--)
+			{
+				if (index == LayerDictionary.Count - 1)
+				{
+					for (var j = 1; j <= LayerDictionary[index].CountPerceptrons; j++)
+					{
+						for (var i = 1; i <= LayerDictionary[index+1].CountPerceptrons; i++)	// _lastLayer
+						{
+							LayerDictionary[index].Connection(j, i).Weight -= _errorCoefficient
+																				* LayerDictionary[index].Perceptron(j).ExitValue()
+																				* LayerDictionary[index + 1].Perceptron(i).ExitValue()
+																				* (1 - LayerDictionary[index + 1].Perceptron(i).ExitValue())
+																				* GetErrorForExit(i);
+						}
+					}
+				}
+			}
+			//LayerDictionary[1].Connection(1, 1).Weight -= _errorCoefficient * EntryValues[1] * ExitValues[1] * (1 - ExitValues[1]) * GetErrorForExit(1);
 		}
 	}
 }
