@@ -43,10 +43,10 @@ namespace Source.NeuralNetworks
 						for (var i = 1; i <= LayerDictionary[index+1].CountPerceptrons; i++)	// _lastLayer
 						{
 							LayerDictionary[index].Connection(j, i).Weight -= _errorCoefficient
-																				* LayerDictionary[index].Perceptron(j).ExitValue()
-																				* LayerDictionary[index + 1].Perceptron(i).ExitValue()
-																				* (1 - LayerDictionary[index + 1].Perceptron(i).ExitValue())
-																				* GetErrorForExit(i);
+																			* LayerDictionary[index].Perceptron(j).ExitValue()
+																			* LayerDictionary[index + 1].Perceptron(i).ExitValue()
+																			* (1 - LayerDictionary[index + 1].Perceptron(i).ExitValue())
+																			* GetErrorForExit(i);
 						}
 					}
 				}
