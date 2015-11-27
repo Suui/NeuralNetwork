@@ -1,4 +1,5 @@
-﻿using Source.NeuralNetworks.Layers;
+﻿using Source.NeuralNetworks.Deltas;
+using Source.NeuralNetworks.Layers;
 
 
 namespace Source.NeuralNetworks
@@ -6,7 +7,8 @@ namespace Source.NeuralNetworks
 	public class NeuralNetwork
 	{
 		private LayerDictionary LayerDictionary { get; }
-		public ValueList<double> EntryValues { get; set; }
+		private DeltaDictionary DeltaDictionary { get; }
+        public ValueList<double> EntryValues { get; set; }
 		public ValueList<double> ExitValues { get; set; }
 		public ValueList<double> ExpectedExitValues { get; set; }
 		private readonly double _errorCoefficient;
@@ -14,6 +16,7 @@ namespace Source.NeuralNetworks
 		public NeuralNetwork(LayerDictionary layers)
 		{
 			LayerDictionary = layers;
+			DeltaDictionary = DeltaDictionaryBuilder.Build(LayerDictionary);
 			EntryValues = new ValueList<double>();
 			ExitValues = new ValueList<double>();
 			_errorCoefficient = 0.1;
@@ -42,16 +45,15 @@ namespace Source.NeuralNetworks
 					{
 						for (var i = 1; i <= LayerDictionary[index+1].CountPerceptrons; i++)	// _lastLayer
 						{
-							LayerDictionary[index].Connection(j, i).Weight -= _errorCoefficient
-																			* LayerDictionary[index].Perceptron(j).ExitValue()
-																			* LayerDictionary[index + 1].Perceptron(i).ExitValue()
-																			* (1 - LayerDictionary[index + 1].Perceptron(i).ExitValue())
-																			* GetErrorForExit(i);
+							DeltaDictionary[index+1].Delta(i).Value = LayerDictionary[index + 1].Perceptron(i).ExitValue()
+									  * (1 - LayerDictionary[index + 1].Perceptron(i).ExitValue())
+									  * GetErrorForExit(i);
+
+							LayerDictionary[index].Connection(j, i).Weight -= _errorCoefficient * LayerDictionary[index].Perceptron(j).ExitValue() * DeltaDictionary[index+1].Delta(i).Value;
 						}
 					}
 				}
 			}
-			//LayerDictionary[1].Connection(1, 1).Weight -= _errorCoefficient * EntryValues[1] * ExitValues[1] * (1 - ExitValues[1]) * GetErrorForExit(1);
 		}
 	}
 }
