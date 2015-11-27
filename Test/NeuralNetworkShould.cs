@@ -102,11 +102,12 @@ namespace Test
 			_thresholdGenerator.Generate().Returns(0.0);
 			_weightGenerator.Generate().Returns(1.0);
 			var neuralNetwork = new NeuralNetworkBuilder(new ConnectionProperties(_weightGenerator), new PerceptronProperties(_thresholdGenerator))
-								.WithLayer(1).From(1).To(1)
+								.WithLayer(1).From(2).To(2)
+								.WithLayer(2).From(2).To(2)
 								.Build();
 
-			neuralNetwork.EntryValues = new ValueList<double> { 1.0 };
-			neuralNetwork.ExpectedExitValues = new ValueList<double> { 0.2 };
+			neuralNetwork.EntryValues = new ValueList<double> { 1.0, 0.5 };
+			neuralNetwork.ExpectedExitValues = new ValueList<double> { 0.2, 0.8 };
 			neuralNetwork.Execute();
 
 			neuralNetwork.ExecuteBackPropagation();
