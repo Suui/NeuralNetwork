@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 
 namespace Source.NeuralNetworks.Deltas
@@ -10,7 +9,10 @@ namespace Source.NeuralNetworks.Deltas
 
 		public DeltaList(int capacity)
 		{
-			_deltaList = Enumerable.Repeat(new Delta(), capacity).ToList();
+			_deltaList = new List<Delta>();
+
+			for (var i = 0; i < capacity; i++)
+				_deltaList.Add(new Delta());
 		}
 
 		public Delta Delta(int index)
