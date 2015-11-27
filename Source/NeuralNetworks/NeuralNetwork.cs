@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Source.NeuralNetworks.Layers;
+﻿using Source.NeuralNetworks.Layers;
 
 
 namespace Source.NeuralNetworks
