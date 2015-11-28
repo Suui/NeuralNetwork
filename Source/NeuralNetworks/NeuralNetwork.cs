@@ -30,11 +30,6 @@ namespace Source.NeuralNetworks
 			ExitValues = LayerDictionary.GetLastLayerExitValues();
 		}
 
-		public double GetErrorForExit(int index)
-		{
-			return -(ExpectedExitValues[index] - ExitValues[index]);
-		}
-
 		public void ExecuteBackPropagation()
 		{
 			for (var index = LayerDictionary.Count - 1; index >= 1; index--)
@@ -83,6 +78,11 @@ namespace Source.NeuralNetworks
 		{
 			return LayerDictionary[index].Perceptron(i).ExitValue()
 				 * (1 - LayerDictionary[index].Perceptron(i).ExitValue());
+		}
+
+		public double GetErrorForExit(int index)
+		{
+			return -(ExpectedExitValues[index] - ExitValues[index]);
 		}
 
 		private double Summation(int index, int j)
