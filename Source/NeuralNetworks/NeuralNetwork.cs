@@ -56,17 +56,9 @@ namespace Source.NeuralNetworks
 		private void CalculateDeltas(int index)
 		{
 			if (index == LayerDictionary.Count)
-			{
 				CalculateLastLayerDeltas();
-				return;
-			}
-
-			for (var j = 1; j <= LayerDictionary[index].CountPerceptrons; j++)
-			{
-				DeltaDictionary[index].Delta(j).Value = LayerDictionary[index].Perceptron(j).ExitValue()
-														* (1 - LayerDictionary[index].Perceptron(j).ExitValue())
-														* Summation(index, j);
-			}
+			else
+				CalculateHiddenLayerDeltas(index);
 		}
 
 		private void CalculateLastLayerDeltas()
@@ -77,6 +69,16 @@ namespace Source.NeuralNetworks
 				DeltaDictionary[lastLayerIndex].Delta(i).Value = LayerDictionary[lastLayerIndex].Perceptron(i).ExitValue()
 															   * (1 - LayerDictionary[lastLayerIndex].Perceptron(i).ExitValue())
 															   * GetErrorForExit(i);
+			}
+		}
+
+		private void CalculateHiddenLayerDeltas(int index)
+		{
+			for (var j = 1; j <= LayerDictionary[index].CountPerceptrons; j++)
+			{
+				DeltaDictionary[index].Delta(j).Value = LayerDictionary[index].Perceptron(j).ExitValue()
+														* (1 - LayerDictionary[index].Perceptron(j).ExitValue())
+														* Summation(index, j);
 			}
 		}
 
