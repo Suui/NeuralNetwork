@@ -37,12 +37,12 @@ namespace Source.NeuralNetworks
 
 		public void ExecuteBackPropagation()
 		{
-			CalculateLastLayerDeltas();
-
 			for (var index = LayerDictionary.Count - 1; index >= 1; index--)
 			{
 				if (index == LayerDictionary.Count - 1)
 				{
+					CalculateDeltas(index + 1);
+
 					for (var j = 1; j <= LayerDictionary[index].CountPerceptrons; j++)
 					{
 						for (var i = 1; i <= LayerDictionary[index+1].CountPerceptrons; i++)	// _lastLayer
@@ -56,12 +56,12 @@ namespace Source.NeuralNetworks
 
 				if (index == LayerDictionary.Count - 2)		// _lastLayer - 1
 				{
+					CalculateDeltas(index + 1);
+
 					for (var h = 1; h <= LayerDictionary[index].CountPerceptrons; h++)
 					{
 						for (var j = 1; j <= LayerDictionary[index+1].CountPerceptrons; j++)
 						{
-							CalculateDeltas(index+1);
-
 							LayerDictionary[index].Connection(h, j).Weight -= _errorCoefficient
 																			* LayerDictionary[index].Perceptron(h).ExitValue()
 																			* DeltaDictionary[index+1].Delta(j).Value;
@@ -93,8 +93,8 @@ namespace Source.NeuralNetworks
 			for (var i = 1; i <= LayerDictionary[lastLayerIndex].CountPerceptrons; i++)
 			{
 				DeltaDictionary[lastLayerIndex].Delta(i).Value = LayerDictionary[lastLayerIndex].Perceptron(i).ExitValue()
-													  * (1 - LayerDictionary[lastLayerIndex].Perceptron(i).ExitValue())
-													  * GetErrorForExit(i);
+															   * (1 - LayerDictionary[lastLayerIndex].Perceptron(i).ExitValue())
+															   * GetErrorForExit(i);
 			}
 		}
 
