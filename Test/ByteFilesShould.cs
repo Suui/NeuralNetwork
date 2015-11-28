@@ -10,13 +10,17 @@ namespace Test
 	public class ByteFilesShould
 	{
 		private string _trainLabels;
+		private string _trainImages;
 		private byte[] _bytes;
 
 		[SetUp]
 		public void Initialize()
 		{
 			_bytes = new byte[4];
-			_trainLabels = @"D:\Projects\Programming\C#\NeuralNetwork\DataMNIST\train_labels";
+
+			const string rootDirectory = @"D:\Projects\Programming\C#\NeuralNetwork\DataMNIST\";
+			_trainLabels = rootDirectory + "train_labels";
+			_trainImages = rootDirectory + "train_images";
 		}
 
 		[Test]
@@ -46,6 +50,10 @@ namespace Test
 
 			var numberOfItem = BitConverter.ToInt32(_bytes, 0);
 			numberOfItem.Should().Be(60000);
+
+			fileStream.Close();
 		}
+
+
 	}
 }
