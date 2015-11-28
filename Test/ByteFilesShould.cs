@@ -33,5 +33,19 @@ namespace Test
 
 			fileStream.Close();
 		}
+
+		[Test]
+		public void have_the_correct_number_of_items_for_the_train_labels()
+		{
+			var fileStream = new FileStream(_trainLabels, FileMode.Open);
+
+			fileStream.Seek(4, SeekOrigin.Begin);
+			fileStream.Read(_bytes, 0, 4);
+			if (BitConverter.IsLittleEndian)
+				Array.Reverse(_bytes);
+
+			var numberOfItem = BitConverter.ToInt32(_bytes, 0);
+			numberOfItem.Should().Be(60000);
+		}
 	}
 }
