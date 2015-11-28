@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Formulas\Sigmoid.cs" />
+    <Compile Include="ByteFileReaders\LabelsReader.cs" />
     <Compile Include="NeuralNetworks\Deltas\Delta.cs" />
     <Compile Include="NeuralNetworks\Deltas\DeltaDictionary.cs" />
     <Compile Include="NeuralNetworks\Deltas\DeltaDictionaryBuilder.cs" />
