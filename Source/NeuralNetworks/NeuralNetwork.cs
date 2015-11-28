@@ -62,30 +62,27 @@ namespace Source.NeuralNetworks
 		private void CalculateDeltas(int index)
 		{
 			if (index == LayerDictionary.Count)
-				CalculateLastLayerDeltas();
+				CalculateLastLayerDeltas(index);
 			else
 				CalculateHiddenLayerDeltas(index);
 		}
 
-		private void CalculateLastLayerDeltas()
+		private void CalculateLastLayerDeltas(int index)
 		{
-			var lastLayerIndex = LayerDictionary.Count;
-			for (var i = 1; i <= LayerDictionary[lastLayerIndex].CountPerceptrons; i++)
-			{
-				DeltaDictionary[lastLayerIndex].Delta(i).Value = LayerDictionary[lastLayerIndex].Perceptron(i).ExitValue()
-															   * (1 - LayerDictionary[lastLayerIndex].Perceptron(i).ExitValue())
-															   * GetErrorForExit(i);
-			}
+			for (var i = 1; i <= LayerDictionary[index].CountPerceptrons; i++)
+				DeltaDictionary[index].Delta(i).Value = ExitValueDerivate(index, i) * GetErrorForExit(i);
 		}
 
 		private void CalculateHiddenLayerDeltas(int index)
 		{
-			for (var j = 1; j <= LayerDictionary[index].CountPerceptrons; j++)
-			{
-				DeltaDictionary[index].Delta(j).Value = LayerDictionary[index].Perceptron(j).ExitValue()
-														* (1 - LayerDictionary[index].Perceptron(j).ExitValue())
-														* Summation(index, j);
-			}
+			for (var i = 1; i <= LayerDictionary[index].CountPerceptrons; i++)
+				DeltaDictionary[index].Delta(i).Value = ExitValueDerivate(index, i) * Summation(index, i);
+		}
+
+		private double ExitValueDerivate(int index, int i)
+		{
+			return LayerDictionary[index].Perceptron(i).ExitValue()
+				 * (1 - LayerDictionary[index].Perceptron(i).ExitValue());
 		}
 
 		private double Summation(int index, int j)
