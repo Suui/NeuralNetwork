@@ -40,18 +40,22 @@ namespace Source.NeuralNetworks
 			for (var index = LayerDictionary.Count - 1; index >= 1; index--)
 			{
 				CalculateDeltas(index + 1);
+				CalculateDerivativeErrors(index);
+			}
+		}
 
-				for (var j = 1; j <= LayerDictionary[index].CountPerceptrons; j++)
+		private void CalculateDerivativeErrors(int index)
+		{
+			for (var j = 1; j <= LayerDictionary[index].CountPerceptrons; j++)
+			{
+				for (var i = 1; i <= LayerDictionary[index + 1].CountPerceptrons; i++)
 				{
-					for (var i = 1; i <= LayerDictionary[index+1].CountPerceptrons; i++)
-					{
-						LayerDictionary[index].Connection(j, i).Weight -= _errorCoefficient
-																		* LayerDictionary[index].Perceptron(j).ExitValue()
-																		* DeltaDictionary[index+1].Delta(i).Value;
+					LayerDictionary[index].Connection(j, i).Weight -= _errorCoefficient
+					                                                  * LayerDictionary[index].Perceptron(j).ExitValue()
+					                                                  * DeltaDictionary[index + 1].Delta(i).Value;
 
-						LayerDictionary[index].Perceptron(i).DerivativeError = _errorCoefficient
-																			 * DeltaDictionary[index + 1].Delta(i).Value;
-					}
+					LayerDictionary[index].Perceptron(i).DerivativeError = _errorCoefficient
+					                                                       * DeltaDictionary[index + 1].Delta(i).Value;
 				}
 			}
 		}
