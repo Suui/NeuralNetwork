@@ -68,6 +68,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ByteFilesShould.cs" />
     <Compile Include="DelimitedRandomShould.cs" />
     <Compile Include="LayerShould.cs" />
     <Compile Include="NeuralNetworkShould.cs" />
