@@ -84,5 +84,21 @@ namespace Test
 
 			fileStream.Close();
 		}
+
+		[Test]
+		public void have_the_correct_number_of_rows_for_the_images_in_the_train_images()
+		{
+			var fileStream = new FileStream(_trainImages, FileMode.Open);
+
+			fileStream.Seek(8, SeekOrigin.Begin);
+			fileStream.Read(_bytes, 0, 4);
+			if (BitConverter.IsLittleEndian)
+				Array.Reverse(_bytes);
+
+			var rowsInImage = BitConverter.ToInt32(_bytes, 0);
+			rowsInImage.Should().Be(28);
+
+			fileStream.Close();
+		}
 	}
 }
