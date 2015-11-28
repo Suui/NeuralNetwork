@@ -7,6 +7,7 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 	{
 		protected int Index { get; set; }
 		public double EntryValue { get; set; }
+		public double DerivativeError { get; set; }
 
 		public Perceptron(int index)
 		{

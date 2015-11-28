@@ -48,6 +48,9 @@ namespace Source.NeuralNetworks
 						LayerDictionary[index].Connection(j, i).Weight -= _errorCoefficient
 																		* LayerDictionary[index].Perceptron(j).ExitValue()
 																		* DeltaDictionary[index+1].Delta(i).Value;
+
+						LayerDictionary[index].Perceptron(i).DerivativeError = _errorCoefficient
+																			 * DeltaDictionary[index + 1].Delta(i).Value;
 					}
 				}
 			}
