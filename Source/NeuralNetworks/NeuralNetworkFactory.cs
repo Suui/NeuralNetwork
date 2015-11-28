@@ -15,7 +15,7 @@ namespace Source.NeuralNetworks
 			return new NeuralNetworkBuilder(new ConnectionProperties(weightGenerator), new PerceptronProperties(thresholdGenerator))
 						.WithLayer(1).From(784).To(392)
 						.WithLayer(2).From(392).To(196)
-						.WithLayer(1).From(196).To(1)
+						.WithLayer(3).From(196).To(1)
 						.Build();
         }
 	}
