@@ -12,6 +12,7 @@ namespace Test
 		private string _trainLabels;
 		private string _trainImages;
 		private byte[] _bytes;
+		private string _testLabels;
 
 		[SetUp]
 		public void Initialize()
@@ -21,6 +22,7 @@ namespace Test
 			const string rootDirectory = @"D:\Projects\Programming\C#\NeuralNetwork\DataMNIST\";
 			_trainLabels = rootDirectory + "train_labels";
 			_trainImages = rootDirectory + "train_images";
+			_testLabels = rootDirectory + "test_labels";
 		}
 
 		[Test]
@@ -113,6 +115,21 @@ namespace Test
 
 			var columnsInImage = BitConverter.ToInt32(_bytes, 0);
 			columnsInImage.Should().Be(28);
+
+			fileStream.Close();
+		}
+
+		[Test]
+		public void have_the_correct_magic_number_for_the_test_labels()
+		{
+			var fileStream = new FileStream(_testLabels, FileMode.Open);
+
+			fileStream.Read(_bytes, 0, 4);
+			if (BitConverter.IsLittleEndian)
+				Array.Reverse(_bytes);
+
+			var magicNumber = BitConverter.ToInt32(_bytes, 0);
+			magicNumber.Should().Be(2049);
 
 			fileStream.Close();
 		}
