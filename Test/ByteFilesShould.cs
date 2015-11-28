@@ -100,5 +100,21 @@ namespace Test
 
 			fileStream.Close();
 		}
+
+		[Test]
+		public void have_the_correct_number_of_columns_for_the_images_in_the_train_images()
+		{
+			var fileStream = new FileStream(_trainImages, FileMode.Open);
+
+			fileStream.Seek(12, SeekOrigin.Begin);
+			fileStream.Read(_bytes, 0, 4);
+			if (BitConverter.IsLittleEndian)
+				Array.Reverse(_bytes);
+
+			var columnsInImage = BitConverter.ToInt32(_bytes, 0);
+			columnsInImage.Should().Be(28);
+
+			fileStream.Close();
+		}
 	}
 }
