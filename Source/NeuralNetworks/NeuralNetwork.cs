@@ -47,30 +47,48 @@ namespace Source.NeuralNetworks
 					{
 						for (var i = 1; i <= LayerDictionary[index+1].CountPerceptrons; i++)	// _lastLayer
 						{
-							LayerDictionary[index].Connection(j, i).Weight -= _errorCoefficient * LayerDictionary[index].Perceptron(j).ExitValue() * DeltaDictionary[index+1].Delta(i).Value;
+							LayerDictionary[index].Connection(j, i).Weight -= _errorCoefficient
+																			* LayerDictionary[index].Perceptron(j).ExitValue()
+																			* DeltaDictionary[index+1].Delta(i).Value;
 						}
 					}
 				}
-				if (index == LayerDictionary.Count - 2)
+
+				if (index == LayerDictionary.Count - 2)		// _lastLayer - 1
 				{
 					for (var h = 1; h <= LayerDictionary[index].CountPerceptrons; h++)
 					{
 						for (var j = 1; j <= LayerDictionary[index+1].CountPerceptrons; j++)
 						{
-							var summation = 0.0;
-							for (var i = 1; i <= LayerDictionary[index+2].CountPerceptrons; i++)
-							{
-								summation += LayerDictionary[index+1].Connection(j, i).Weight * DeltaDictionary[index+2].Delta(i).Value;
-							}
+							CalculateDeltas(index+1);
 
 							LayerDictionary[index].Connection(h, j).Weight -= _errorCoefficient
 																			* LayerDictionary[index].Perceptron(h).ExitValue()
-																			* LayerDictionary[index+1].Perceptron(j).ExitValue()
-																			* (1 - LayerDictionary[index + 1].Perceptron(j).ExitValue())
-																			* summation;
+																			* DeltaDictionary[index+1].Delta(j).Value;
 						}
 					}
 				}
+			}
+		}
+
+		private void CalculateDeltas(int index)
+		{
+			if (index == LayerDictionary.Count)
+			{
+				CalculateLastLayerDeltas();
+				return;
+			}
+
+			for (var j = 1; j < LayerDictionary[index].CountPerceptrons; j++)
+			{
+				var summation = 0.0;
+				for (var i = 1; i <= LayerDictionary[index + 1].CountPerceptrons; i++)
+				{
+					summation += LayerDictionary[index].Connection(j, i).Weight * DeltaDictionary[index + 1].Delta(i).Value;
+				}
+				DeltaDictionary[index].Delta(j).Value = LayerDictionary[index].Perceptron(j).ExitValue()
+															* (1 - LayerDictionary[index].Perceptron(j).ExitValue())
+															* summation;
 			}
 		}
 
