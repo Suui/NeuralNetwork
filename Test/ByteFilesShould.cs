@@ -13,6 +13,7 @@ namespace Test
 		private string _trainImages;
 		private byte[] _bytes;
 		private string _testLabels;
+		private string _testImages;
 
 		[SetUp]
 		public void Initialize()
@@ -23,6 +24,7 @@ namespace Test
 			_trainLabels = rootDirectory + "train_labels";
 			_trainImages = rootDirectory + "train_images";
 			_testLabels = rootDirectory + "test_labels";
+			_testImages = rootDirectory + "test_images";
 		}
 
 		[Test]
@@ -146,6 +148,21 @@ namespace Test
 
 			var numberOfItem = BitConverter.ToInt32(_bytes, 0);
 			numberOfItem.Should().Be(10000);
+
+			fileStream.Close();
+		}
+
+		[Test]
+		public void have_the_correct_magic_number_for_the_test_images()
+		{
+			var fileStream = new FileStream(_testImages, FileMode.Open);
+
+			fileStream.Read(_bytes, 0, 4);
+			if (BitConverter.IsLittleEndian)
+				Array.Reverse(_bytes);
+
+			var magicNumber = BitConverter.ToInt32(_bytes, 0);
+			magicNumber.Should().Be(2051);
 
 			fileStream.Close();
 		}
