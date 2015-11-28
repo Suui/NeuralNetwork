@@ -44,6 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Formulas\Sigmoid.cs" />
+    <Compile Include="NeuralNetworks\Deltas\Delta.cs" />
+    <Compile Include="NeuralNetworks\Deltas\DeltaDictionary.cs" />
+    <Compile Include="NeuralNetworks\Deltas\DeltaDictionaryBuilder.cs" />
+    <Compile Include="NeuralNetworks\Deltas\DeltaList.cs" />
     <Compile Include="NeuralNetworks\Layers\Connections\ConnectionProperties.cs" />
     <Compile Include="NeuralNetworks\Layers\Connections\Connection.cs" />
     <Compile Include="NeuralNetworks\Layers\Connections\ConnectionList.cs" />

@@ -7,6 +7,7 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 	{
 		protected int Index { get; set; }
 		public double EntryValue { get; set; }
+		public double DerivativeError { get; set; }
 
 		public Perceptron(int index)
 		{
@@ -49,6 +50,11 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 				result += PreviousLayer.Perceptron(j).ExitValue() * PreviousLayer.Connection(j, Index).Weight;
 
 			return result;
+		}
+
+		public void ApplyDerivativeError()
+		{
+			Threshold -= DerivativeError;
 		}
 	}
 }
