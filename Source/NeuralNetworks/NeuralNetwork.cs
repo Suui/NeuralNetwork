@@ -1,6 +1,5 @@
 ﻿using Source.NeuralNetworks.Deltas;
 using Source.NeuralNetworks.Layers;
-using Source.NeuralNetworks.Layers.Connections;
 using Source.NeuralNetworks.Layers.Perceptrons;
 
 
@@ -51,18 +50,29 @@ namespace Source.NeuralNetworks
 		{
 			for (var i = LayerDictionary.Count; i >= 1; i--)
 			{
-				foreach (Perceptron perceptron in LayerDictionary[i].Perceptrons)
+				ApplyToPerceptrons(i);
+				ApplyToConnections(i);
+			}
+		}
+
+		private void ApplyToPerceptrons(int i)
+		{
+			foreach (Perceptron perceptron in LayerDictionary[i].Perceptrons)
+			{
+				var innerPerceptron = perceptron as InnerPerceptron;
+				innerPerceptron?.ApplyDerivativeError();
+			}
+		}
+
+		private void ApplyToConnections(int i)
+		{
+			if (i == LayerDictionary.Count) return;
+
+			for (var j = 1; j < LayerDictionary[i].CountPerceptrons; j++)
+			{
+				for (var k = 1; k < LayerDictionary[i + 1].CountPerceptrons; k++)
 				{
-					var innerPerceptron = perceptron as InnerPerceptron;
-					innerPerceptron?.ApplyDerivativeError();
-				}
-				if (i == LayerDictionary.Count) continue;
-				for (var j = 1; j < LayerDictionary[i].CountPerceptrons; j++)
-				{
-					for (var k = 1; k < LayerDictionary[i + 1].CountPerceptrons; k++)
-					{
-						LayerDictionary[i].Connection(j, k).ApplyDerivativeError();
-					}
+					LayerDictionary[i].Connection(j, k).ApplyDerivativeError();
 				}
 			}
 		}
