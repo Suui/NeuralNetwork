@@ -68,5 +68,21 @@ namespace Test
 
 			fileStream.Close();
 		}
+
+		[Test]
+		public void have_the_correct_number_of_images_for_the_train_images()
+		{
+			var fileStream = new FileStream(_trainImages, FileMode.Open);
+
+			fileStream.Seek(4, SeekOrigin.Begin);
+			fileStream.Read(_bytes, 0, 4);
+			if (BitConverter.IsLittleEndian)
+				Array.Reverse(_bytes);
+
+			var numberOfImages = BitConverter.ToInt32(_bytes, 0);
+			numberOfImages.Should().Be(60000);
+
+			fileStream.Close();
+		}
 	}
 }
