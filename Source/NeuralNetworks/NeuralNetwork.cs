@@ -79,16 +79,11 @@ namespace Source.NeuralNetworks
 				return;
 			}
 
-			for (var j = 1; j < LayerDictionary[index].CountPerceptrons; j++)
+			for (var j = 1; j <= LayerDictionary[index].CountPerceptrons; j++)
 			{
-				var summation = 0.0;
-				for (var i = 1; i <= LayerDictionary[index + 1].CountPerceptrons; i++)
-				{
-					summation += LayerDictionary[index].Connection(j, i).Weight * DeltaDictionary[index + 1].Delta(i).Value;
-				}
 				DeltaDictionary[index].Delta(j).Value = LayerDictionary[index].Perceptron(j).ExitValue()
-															* (1 - LayerDictionary[index].Perceptron(j).ExitValue())
-															* summation;
+														* (1 - LayerDictionary[index].Perceptron(j).ExitValue())
+														* Summation(index, j);
 			}
 		}
 
@@ -101,6 +96,16 @@ namespace Source.NeuralNetworks
 													  * (1 - LayerDictionary[lastLayerIndex].Perceptron(i).ExitValue())
 													  * GetErrorForExit(i);
 			}
+		}
+
+		private double Summation(int index, int j)
+		{
+			var summation = 0.0;
+
+			for (var i = 1; i <= LayerDictionary[index + 1].CountPerceptrons; i++)
+				summation += LayerDictionary[index].Connection(j, i).Weight * DeltaDictionary[index + 1].Delta(i).Value;
+
+			return summation;
 		}
 	}
 }
