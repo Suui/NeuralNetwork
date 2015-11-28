@@ -54,6 +54,19 @@ namespace Test
 			fileStream.Close();
 		}
 
+		[Test]
+		public void have_the_correct_magic_number_for_the_train_images()
+		{
+			var fileStream = new FileStream(_trainImages, FileMode.Open);
 
+			fileStream.Read(_bytes, 0, 4);
+			if (BitConverter.IsLittleEndian)
+				Array.Reverse(_bytes);
+
+			var magicNumber = BitConverter.ToInt32(_bytes, 0);
+			magicNumber.Should().Be(2051);
+
+			fileStream.Close();
+		}
 	}
 }
