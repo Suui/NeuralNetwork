@@ -65,7 +65,7 @@
     <Compile Include="NeuralNetworks\NeuralNetwork.cs" />
     <Compile Include="NeuralNetworks\NeuralNetworkBuilder.cs" />
     <Compile Include="NeuralNetworks\NeuralNetworkFactory.cs" />
-    <Compile Include="NeuralNetworks\Layers\Perceptrons\InnerPerceptron.cs" />
+    <Compile Include="NeuralNetworks\Layers\Perceptrons\Perceptron.cs" />
     <Compile Include="Exceptions\UnvalidDelimiterException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
