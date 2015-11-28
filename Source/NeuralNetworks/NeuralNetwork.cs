@@ -43,7 +43,7 @@ namespace Source.NeuralNetworks
 
 				for (var j = 1; j <= LayerDictionary[index].CountPerceptrons; j++)
 				{
-					for (var i = 1; i <= LayerDictionary[index+1].CountPerceptrons; i++)	// _lastLayer
+					for (var i = 1; i <= LayerDictionary[index+1].CountPerceptrons; i++)
 					{
 						LayerDictionary[index].Connection(j, i).Weight -= _errorCoefficient
 																		* LayerDictionary[index].Perceptron(j).ExitValue()
