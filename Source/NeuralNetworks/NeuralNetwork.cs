@@ -1,5 +1,7 @@
 ﻿using Source.NeuralNetworks.Deltas;
 using Source.NeuralNetworks.Layers;
+using Source.NeuralNetworks.Layers.Connections;
+using Source.NeuralNetworks.Layers.Perceptrons;
 
 
 namespace Source.NeuralNetworks
@@ -32,10 +34,36 @@ namespace Source.NeuralNetworks
 
 		public void ExecuteBackPropagation()
 		{
+			SetUp();
+			Apply();
+		}
+
+		private void SetUp()
+		{
 			for (var index = LayerDictionary.Count - 1; index >= 1; index--)
 			{
 				CalculateDeltas(index + 1);
 				CalculateDerivativeErrors(index);
+			}
+		}
+
+		private void Apply()
+		{
+			for (var i = LayerDictionary.Count; i >= 1; i--)
+			{
+				foreach (Perceptron perceptron in LayerDictionary[i].Perceptrons)
+				{
+					var innerPerceptron = perceptron as InnerPerceptron;
+					innerPerceptron?.ApplyDerivativeError();
+				}
+				if (i == LayerDictionary.Count) continue;
+				for (var j = 1; j < LayerDictionary[i].CountPerceptrons; j++)
+				{
+					for (var k = 1; k < LayerDictionary[i + 1].CountPerceptrons; k++)
+					{
+						LayerDictionary[i].Connection(j, k).ApplyDerivativeError();
+					}
+				}
 			}
 		}
 
@@ -46,7 +74,7 @@ namespace Source.NeuralNetworks
 				for (var i = 1; i <= LayerDictionary[index + 1].CountPerceptrons; i++)
 				{
 					LayerDictionary[index].Perceptron(i).DerivativeError = _errorCoefficient
-					                                                       * DeltaDictionary[index + 1].Delta(i).Value;
+																		 * DeltaDictionary[index + 1].Delta(i).Value;
 
 					LayerDictionary[index].Connection(j, i).DerivativeError = LayerDictionary[index].Perceptron(j).ExitValue()
 																			* LayerDictionary[index].Perceptron(i).DerivativeError;
