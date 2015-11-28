@@ -32,7 +32,7 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 			Index = index;
 			PreviousLayer = perceptronProperties.PreviousLayer;
 			Threshold = perceptronProperties.ThresholdGenerator.Generate();
-			Formula = new Sigmoid();
+			Formula = perceptronProperties.Formula;
 		}
 
 		public override double ExitValue()
