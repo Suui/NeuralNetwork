@@ -1,18 +1,22 @@
-using System.IO;
+﻿using System.IO;
 using Source.NeuralNetworks;
 
 
 namespace Source.ByteFileReaders
 {
-	public class ImagesReader
+	public class ByteFileReader
 	{
-		private readonly FileStream _fileStream;
-		private const int ImagesOffset = 16;
+		protected readonly FileStream _fileStream;
 
-		public ImagesReader(string filePath)
+		public ByteFileReader(string filePath, long offset)
 		{
 			_fileStream = new FileStream(filePath, FileMode.Open);
-			_fileStream.Seek(ImagesOffset, SeekOrigin.Begin);
+			_fileStream.Seek(offset, SeekOrigin.Begin);
+		}
+
+		public ValueList<double> Next()
+		{
+			return new ValueList<double> { _fileStream.ReadByte() };
 		}
 
 		public ValueList<double> Next(int numberOfBytes)
@@ -23,6 +27,11 @@ namespace Source.ByteFileReaders
 				byteValues.Add(_fileStream.ReadByte());
 
 			return byteValues;
+		}
+
+		public void Close()
+		{
+			_fileStream.Close();
 		}
 	}
 }
