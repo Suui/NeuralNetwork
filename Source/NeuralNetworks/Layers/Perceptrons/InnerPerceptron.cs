@@ -51,5 +51,10 @@ namespace Source.NeuralNetworks.Layers.Perceptrons
 
 			return result;
 		}
+
+		public void ApplyDerivativeError()
+		{
+			Threshold -= DerivativeError;
+		}
 	}
 }
