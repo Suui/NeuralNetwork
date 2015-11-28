@@ -87,12 +87,12 @@ namespace Source.NeuralNetworks
 
 		private double Summation(int index, int j)
 		{
-			var summation = 0.0;
+			var result = 0.0;
 
 			for (var i = 1; i <= LayerDictionary[index + 1].CountPerceptrons; i++)
-				summation += LayerDictionary[index].Connection(j, i).Weight * DeltaDictionary[index + 1].Delta(i).Value;
+				result += LayerDictionary[index].Connection(j, i).Weight * DeltaDictionary[index + 1].Delta(i).Value;
 
-			return summation;
+			return result;
 		}
 	}
 }
