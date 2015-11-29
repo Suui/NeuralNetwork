@@ -6,7 +6,7 @@ namespace Source.ByteFileReaders
 {
 	public class ByteFileReader
 	{
-		protected readonly FileStream _fileStream;
+		private readonly FileStream _fileStream;
 
 		public ByteFileReader(string filePath, long offset)
 		{
