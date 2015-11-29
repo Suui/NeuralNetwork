@@ -13,9 +13,8 @@ namespace Source.NeuralNetworks
 			var thresholdGenerator = new DelimitedRandom(-10000, 10000);
 
 			return new NeuralNetworkBuilder(new ConnectionProperties(weightGenerator), new PerceptronProperties(thresholdGenerator))
-						.WithLayer(1).From(784).To(392)
-						.WithLayer(2).From(392).To(196)
-						.WithLayer(3).From(196).To(1)
+						.WithLayer(1).From(784).To(49)
+						.WithLayer(2).From(49).To(1)
 						.Build();
         }
 	}
