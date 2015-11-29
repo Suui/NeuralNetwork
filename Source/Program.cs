@@ -7,7 +7,7 @@ namespace Source
 	{
 		static void Main(string[] args)
 		{
-			var application = new PracticeFourApplication();
+			var application = new TheoryClassTask();
 			application.Execute();
 		}
 	}
