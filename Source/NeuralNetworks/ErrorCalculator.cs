@@ -1,7 +1,7 @@
 using System;
 
 
-namespace Source
+namespace Source.NeuralNetworks
 {
 	public class ErrorCalculator
 	{

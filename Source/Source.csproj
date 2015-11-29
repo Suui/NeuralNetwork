@@ -44,8 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ByteFileReaders\ByteFileReader.cs" />
-    <Compile Include="ErrorCalculator.cs" />
     <Compile Include="Applications\CustomApplication.cs" />
+    <Compile Include="NeuralNetworks\ErrorCalculator.cs" />
     <Compile Include="Formulas\Sigmoid.cs" />
     <Compile Include="NeuralNetworks\Deltas\Delta.cs" />
     <Compile Include="NeuralNetworks\Deltas\DeltaDictionary.cs" />
