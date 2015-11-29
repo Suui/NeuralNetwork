@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="ByteFileReaders\ByteFileReader.cs" />
     <Compile Include="ErrorCalculator.cs" />
+    <Compile Include="Applications\CustomApplication.cs" />
     <Compile Include="Formulas\Sigmoid.cs" />
     <Compile Include="NeuralNetworks\Deltas\Delta.cs" />
     <Compile Include="NeuralNetworks\Deltas\DeltaDictionary.cs" />
@@ -69,12 +70,14 @@
     <Compile Include="NeuralNetworks\NeuralNetworkFactory.cs" />
     <Compile Include="NeuralNetworks\Layers\Perceptrons\Perceptron.cs" />
     <Compile Include="Exceptions\UnvalidDelimiterException.cs" />
+    <Compile Include="Applications\PracticeFourApplication.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
