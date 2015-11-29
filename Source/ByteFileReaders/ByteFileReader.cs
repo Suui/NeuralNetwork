@@ -6,7 +6,7 @@ namespace Source.ByteFileReaders
 {
 	public class ByteFileReader
 	{
-		protected readonly FileStream _fileStream;
+		private readonly FileStream _fileStream;
 
 		public ByteFileReader(string filePath, long offset)
 		{
@@ -16,7 +16,7 @@ namespace Source.ByteFileReaders
 
 		public ValueList<double> Next()
 		{
-			return new ValueList<double> { _fileStream.ReadByte() };
+			return new ValueList<double> { _fileStream.ReadByte() / 9.0 };
 		}
 
 		public ValueList<double> Next(int numberOfBytes)
@@ -24,7 +24,7 @@ namespace Source.ByteFileReaders
 			var byteValues = new ValueList<double>();
 
 			for (var i = 0; i < numberOfBytes; i++)
-				byteValues.Add(_fileStream.ReadByte());
+				byteValues.Add(_fileStream.ReadByte() / 255.0);
 
 			return byteValues;
 		}

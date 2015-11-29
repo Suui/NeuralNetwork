@@ -9,8 +9,8 @@ namespace Source.NeuralNetworks
 	{
 		public static NeuralNetwork NeuralNetworkForPracticeFour()
 		{
-			var weightGenerator = new DelimitedRandom(-10000, 10000);
-			var thresholdGenerator = new DelimitedRandom(-10000, 10000);
+			var weightGenerator = new DelimitedRandom(-1, 1);
+			var thresholdGenerator = new DelimitedRandom(-1, 1);
 
 			return new NeuralNetworkBuilder(new ConnectionProperties(weightGenerator), new PerceptronProperties(thresholdGenerator))
 						.WithLayer(1).From(784).To(49)
