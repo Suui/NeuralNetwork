@@ -20,7 +20,7 @@ namespace Source.NeuralNetworks
 			DeltaDictionary = DeltaDictionaryBuilder.Build(LayerDictionary);
 			EntryValues = new ValueList<double>();
 			ExitValues = new ValueList<double>();
-			_errorCoefficient = 0.1;
+			_errorCoefficient = 0.2;
 		}
 
 		public void Execute()
