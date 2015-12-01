@@ -13,17 +13,6 @@ namespace Source.NeuralNetworks
 		private readonly AcceptanceMatcher _acceptanceMatcher;
 		private int _index;
 
-		public NeuralNetworkBuilder(ConnectionProperties connectionProperties, PerceptronProperties perceptronProperties)
-		{
-			_layerDictionary = new LayerDictionary();
-
-			_layerProperties = new LayerProperties
-			{
-				ConnectionProperties = connectionProperties,
-				PerceptronProperties = perceptronProperties
-			};
-		}
-
 		public NeuralNetworkBuilder(ConnectionProperties connectionProperties, PerceptronProperties perceptronProperties, AcceptanceMatcher acceptanceMatcher)
 		{
 			_layerDictionary = new LayerDictionary();
