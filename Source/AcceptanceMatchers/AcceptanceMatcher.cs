@@ -13,22 +13,15 @@
 			_aboveDistance = aboveDistance;
 		}
 
-		public AcceptanceMatcher IsValue(double value)
-		{
-			_value = value;
-			return this;
-		}
-
-		public bool AcceptedForExpectedValue(double expectedValue)
-		{
-			if (_value == expectedValue) return true;
-			if (_value == expectedValue + _aboveDistance) return true;
-			return false;
-		}
-
 		public AcceptanceMatcher ForExpectedValue(double expectedValue)
 		{
 			_expectedValue = expectedValue;
+			return this;
+		}
+
+		public AcceptanceMatcher IsValue(double value)
+		{
+			_value = value;
 			return this;
 		}
 
