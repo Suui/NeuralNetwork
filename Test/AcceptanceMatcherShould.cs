@@ -40,7 +40,7 @@ namespace Test
 		[Test]
 		public void return_true_when_passed_a_number_at_the_above_distance()
 		{
-			_acceptanceMatcher.IsValue(2.049).AcceptedForExpectedValue(2).Should().BeTrue();
+			_acceptanceMatcher.ForExpectedValue(2).IsValue(2.049).Accepted().Should().BeTrue();
 		}
 	}
 }

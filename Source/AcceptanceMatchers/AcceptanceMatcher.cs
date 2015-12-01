@@ -35,6 +35,7 @@
 		public bool Accepted()
 		{
 			if (_value == _expectedValue) return true;
+			if (_value == _expectedValue + _aboveDistance) return true;
 			return false;
 		}
 	}
