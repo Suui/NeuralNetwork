@@ -73,6 +73,7 @@
     <Compile Include="LayerShould.cs" />
     <Compile Include="NeuralNetworkShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AcceptanceMatcherShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

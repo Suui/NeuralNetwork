@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AcceptanceMatchers\AcceptanceMatcher.cs" />
     <Compile Include="ByteFileReaders\ByteFileReader.cs" />
     <Compile Include="Applications\CustomApplication.cs" />
     <Compile Include="NeuralNetworks\ErrorCalculator.cs" />
