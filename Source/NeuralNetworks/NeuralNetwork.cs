@@ -16,19 +16,14 @@ namespace Source.NeuralNetworks
 		private readonly AcceptanceMatcher _acceptanceMatcher;
 		private readonly double _errorCoefficient;
 
-		public NeuralNetwork(LayerDictionary layers)
+		public NeuralNetwork(LayerDictionary layers, AcceptanceMatcher acceptanceMatcher)
 		{
 			LayerDictionary = layers;
 			DeltaDictionary = DeltaDictionaryBuilder.Build(LayerDictionary);
 			EntryValues = new ValueList<double>();
 			ExitValues = new ValueList<double>();
-			_errorCoefficient = 0.2;
-		}
-
-		public NeuralNetwork(LayerDictionary layers, AcceptanceMatcher acceptanceMatcher)
-			: this(layers)
-		{
 			_acceptanceMatcher = acceptanceMatcher;
+			_errorCoefficient = 0.2;
 		}
 
 		public void Execute()
