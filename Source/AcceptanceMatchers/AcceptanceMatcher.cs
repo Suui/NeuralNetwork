@@ -28,7 +28,7 @@
 		public bool Accepted()
 		{
 			if (_value == _expectedValue) return true;
-			if (_value <= _expectedValue + _aboveDistance) return true;
+			if (_value <= _expectedValue + _aboveDistance && _value > _expectedValue + _belowDistance) return true;
 			return false;
 		}
 	}
