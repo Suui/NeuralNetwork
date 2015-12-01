@@ -37,7 +37,7 @@ namespace Source.NeuralNetworks
 			_layerProperties.LeftPerceptrons = _layerProperties.RightPerceptrons;
 			_layerProperties.RightPerceptrons = 0;
 			_layerDictionary.Add(_index + 1, new Layer(_layerProperties));
-			return new NeuralNetwork(_layerDictionary);
+			return new NeuralNetwork(_layerDictionary, _acceptanceMatcher);
 		}
 
 		public NeuralNetworkBuilder WithLayer(int index)

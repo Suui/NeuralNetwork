@@ -1,4 +1,5 @@
-﻿using Source.NeuralNetworks.Deltas;
+﻿using Source.AcceptanceMatchers;
+using Source.NeuralNetworks.Deltas;
 using Source.NeuralNetworks.Layers;
 using Source.NeuralNetworks.Layers.Perceptrons;
 
@@ -12,6 +13,7 @@ namespace Source.NeuralNetworks
         public ValueList<double> EntryValues { get; set; }
 		public ValueList<double> ExitValues { get; set; }
 		public ValueList<double> ExpectedExitValues { get; set; }
+		private readonly AcceptanceMatcher _acceptanceMatcher;
 		private readonly double _errorCoefficient;
 
 		public NeuralNetwork(LayerDictionary layers)
@@ -21,6 +23,12 @@ namespace Source.NeuralNetworks
 			EntryValues = new ValueList<double>();
 			ExitValues = new ValueList<double>();
 			_errorCoefficient = 0.2;
+		}
+
+		public NeuralNetwork(LayerDictionary layers, AcceptanceMatcher acceptanceMatcher)
+			: this(layers)
+		{
+			_acceptanceMatcher = acceptanceMatcher;
 		}
 
 		public void Execute()
