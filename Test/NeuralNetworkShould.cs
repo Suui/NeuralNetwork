@@ -3,7 +3,6 @@ using NSubstitute;
 using NUnit.Framework;
 using Source.AcceptanceMatchers;
 using Source.NeuralNetworks;
-using Source.NeuralNetworks.Layers;
 using Source.NeuralNetworks.Layers.Connections;
 using Source.NeuralNetworks.Layers.Perceptrons;
 using Source.NumberGenerators;
@@ -106,6 +105,21 @@ namespace Test
 			neuralNetwork.ExpectedExitValues = new ValueList<double> { 0.8 };
 
 			neuralNetwork.GetErrorForExit(1).Should().BeApproximately(-0.30000000, 0.00000001);
+		}
+
+		[Test]
+		public void return_0_as_error_if_it_is_between_the_acceptance_matcher_limits()
+		{
+			var neuralNetwork = new NeuralNetworkBuilder(new ConnectionProperties(_weightGenerator), 
+														 new PerceptronProperties(_thresholdGenerator),
+														 new AcceptanceMatcher(-0.049, 0.049))
+														.WithLayer(1).From(1).To(1)
+														.Build();
+
+			neuralNetwork.ExitValues = new ValueList<double> { 2.049 };
+			neuralNetwork.ExpectedExitValues = new ValueList<double> { 2 };
+
+			neuralNetwork.GetErrorForExit(1).Should().Be(0.0);
 		}
 
 		[Test]
