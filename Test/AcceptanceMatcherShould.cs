@@ -50,10 +50,21 @@ namespace Test
 		}
 
 		[Test]
+		public void return_false_when_passed_a_number_above_the_above_distance()
+		{
+			_acceptanceMatcher.ForExpectedValue(2).IsValue(2.0491).Accepted().Should().BeFalse();
+		}
+
+		[Test]
 		public void return_false_when_passed_a_number_under_the_below_distance()
 		{
 			_acceptanceMatcher.ForExpectedValue(2).IsValue(1.9509).Accepted().Should().BeFalse();
 		}
+
+		[Test]
+		public void return_true_when_passed_a_number_at_the_below_distance()
+		{
+			_acceptanceMatcher.ForExpectedValue(2).IsValue(1.951).Accepted().Should().BeTrue();
 		}
 	}
 }
