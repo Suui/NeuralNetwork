@@ -25,9 +25,15 @@ namespace Source.NeuralNetworks
 		}
 
 		public NeuralNetworkBuilder(ConnectionProperties connectionProperties, PerceptronProperties perceptronProperties, AcceptanceMatcher acceptanceMatcher)
-			: this(connectionProperties, perceptronProperties)
 		{
+			_layerDictionary = new LayerDictionary();
 			_acceptanceMatcher = acceptanceMatcher;
+
+			_layerProperties = new LayerProperties
+			{
+				ConnectionProperties = connectionProperties,
+				PerceptronProperties = perceptronProperties
+			};
 		}
 
 		public NeuralNetwork Build()

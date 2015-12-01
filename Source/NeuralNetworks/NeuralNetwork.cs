@@ -128,7 +128,10 @@ namespace Source.NeuralNetworks
 
 		public double GetErrorForExit(int index)
 		{
-			return -(ExpectedExitValues[index] - ExitValues[index]);
+			return _acceptanceMatcher
+					.ForExpectedValue(ExpectedExitValues[index])
+					.IsValue(ExitValues[index]).Accepted() ? 0.0
+														   : -(ExpectedExitValues[index] - ExitValues[index]);
 		}
 
 		private double Summation(int index, int j)

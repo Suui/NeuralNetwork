@@ -1,7 +1,9 @@
 ﻿using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
+using Source.AcceptanceMatchers;
 using Source.NeuralNetworks;
+using Source.NeuralNetworks.Layers;
 using Source.NeuralNetworks.Layers.Connections;
 using Source.NeuralNetworks.Layers.Perceptrons;
 using Source.NumberGenerators;
@@ -27,10 +29,12 @@ namespace Test
 		{
 			_thresholdGenerator.Generate().Returns(9999.0);
 			_weightGenerator.Generate().Returns(1.0);
-			var neuralNetwork = new NeuralNetworkBuilder(new ConnectionProperties(_weightGenerator), new PerceptronProperties(_thresholdGenerator))
-								.WithLayer(1).From(1).To(1)
-								.WithLayer(2).From(1).To(1)
-								.Build();
+			var neuralNetwork = new NeuralNetworkBuilder(new ConnectionProperties(_weightGenerator), 
+														 new PerceptronProperties(_thresholdGenerator),
+														 new AcceptanceMatcher(0.0, 0.0))
+														.WithLayer(1).From(1).To(1)
+														.WithLayer(2).From(1).To(1)
+														.Build();
 
 			neuralNetwork.Execute();
 
@@ -42,10 +46,12 @@ namespace Test
 		{
 			_thresholdGenerator.Generate().Returns(-9999.0);
 			_weightGenerator.Generate().Returns(1.0);
-			var neuralNetwork = new NeuralNetworkBuilder(new ConnectionProperties(_weightGenerator), new PerceptronProperties(_thresholdGenerator))
-								.WithLayer(1).From(1).To(1)
-								.WithLayer(2).From(1).To(1)
-								.Build();
+			var neuralNetwork = new NeuralNetworkBuilder(new ConnectionProperties(_weightGenerator),
+														 new PerceptronProperties(_thresholdGenerator),
+														 new AcceptanceMatcher(0.0, 0.0))
+														.WithLayer(1).From(1).To(1)
+														.WithLayer(2).From(1).To(1)
+														.Build();
 
 			neuralNetwork.Execute();
 
@@ -57,9 +63,11 @@ namespace Test
 		{
 			_thresholdGenerator.Generate().Returns(0.0);
 			_weightGenerator.Generate().Returns(1.0);
-			var neuralNetwork = new NeuralNetworkBuilder(new ConnectionProperties(_weightGenerator), new PerceptronProperties(_thresholdGenerator))
-								.WithLayer(1).From(1).To(1)
-								.Build();
+			var neuralNetwork = new NeuralNetworkBuilder(new ConnectionProperties(_weightGenerator),
+														 new PerceptronProperties(_thresholdGenerator),
+														 new AcceptanceMatcher(0.0, 0.0))
+														.WithLayer(1).From(1).To(1)
+														.Build();
 
 			neuralNetwork.EntryValues = new ValueList<double> { 0.0 };
 			neuralNetwork.Execute();
@@ -72,9 +80,11 @@ namespace Test
 		{
 			_thresholdGenerator.Generate().Returns(-7.0);
 			_weightGenerator.Generate().Returns(1.0);
-			var neuralNetwork = new NeuralNetworkBuilder(new ConnectionProperties(_weightGenerator), new PerceptronProperties(_thresholdGenerator))
-								.WithLayer(1).From(2).To(1)
-								.Build();
+			var neuralNetwork = new NeuralNetworkBuilder(new ConnectionProperties(_weightGenerator),
+														 new PerceptronProperties(_thresholdGenerator),
+														 new AcceptanceMatcher(0.0, 0.0))
+														.WithLayer(1).From(2).To(1)
+														.Build();
 
 			neuralNetwork.EntryValues = new ValueList<double> { 2.0, 4.0 };
 			neuralNetwork.Execute();
@@ -85,9 +95,11 @@ namespace Test
 		[Test]
 		public void return_correct_error_value_for_an_exit_with_an_associated_expected_value()
 		{
-			var neuralNetwork = new NeuralNetworkBuilder(new ConnectionProperties(_weightGenerator), new PerceptronProperties(_thresholdGenerator))
-								.WithLayer(1).From(1).To(1)
-								.Build();
+			var neuralNetwork = new NeuralNetworkBuilder(new ConnectionProperties(_weightGenerator), 
+														 new PerceptronProperties(_thresholdGenerator),
+														 new AcceptanceMatcher(0.0, 0.0))
+														.WithLayer(1).From(1).To(1)
+														.Build();
 
 			neuralNetwork.EntryValues = new ValueList<double> { 1.0 };
 			neuralNetwork.ExitValues = new ValueList<double> { 0.5 };
@@ -101,12 +113,14 @@ namespace Test
 		{
 			_thresholdGenerator.Generate().Returns(0.0);
 			_weightGenerator.Generate().Returns(1.0);
-			var neuralNetwork = new NeuralNetworkBuilder(new ConnectionProperties(_weightGenerator), new PerceptronProperties(_thresholdGenerator))
-								.WithLayer(1).From(2).To(2)
-								.WithLayer(2).From(2).To(2)
-								.WithLayer(3).From(2).To(2)
-								.WithLayer(4).From(2).To(2)
-								.Build();
+			var neuralNetwork = new NeuralNetworkBuilder(new ConnectionProperties(_weightGenerator), 
+														 new PerceptronProperties(_thresholdGenerator),
+														 new AcceptanceMatcher(0.0, 0.0))
+														.WithLayer(1).From(2).To(2)
+														.WithLayer(2).From(2).To(2)
+														.WithLayer(3).From(2).To(2)
+														.WithLayer(4).From(2).To(2)
+														.Build();
 
 			neuralNetwork.EntryValues = new ValueList<double> { 0.2, 0.4, 0.6, 0.8 };
 			neuralNetwork.ExpectedExitValues = new ValueList<double> { 0.9, 0.6, 0.3, 0.0 };
