@@ -34,7 +34,7 @@ namespace Test
 		[Test]
 		public void return_true_when_passed_number_equals_expected_number()
 		{
-			_acceptanceMatcher.IsValue(0).AcceptedForExpectedValue(0).Should().BeTrue();
+			_acceptanceMatcher.ForExpectedValue(0).IsValue(0).Accepted().Should().BeTrue();
 		}
 
 		[Test]

@@ -4,6 +4,7 @@
 	{
 		private readonly double _belowDistance;
 		private readonly double _aboveDistance;
+		private double _expectedValue;
 		private double _value;
 
 		public AcceptanceMatcher(double belowDistance, double aboveDistance)
@@ -22,6 +23,18 @@
 		{
 			if (_value == expectedValue) return true;
 			if (_value == expectedValue + _aboveDistance) return true;
+			return false;
+		}
+
+		public AcceptanceMatcher ForExpectedValue(double expectedValue)
+		{
+			_expectedValue = expectedValue;
+			return this;
+		}
+
+		public bool Accepted()
+		{
+			if (_value == _expectedValue) return true;
 			return false;
 		}
 	}
