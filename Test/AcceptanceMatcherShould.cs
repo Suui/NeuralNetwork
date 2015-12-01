@@ -36,5 +36,11 @@ namespace Test
 		{
 			_acceptanceMatcher.IsValue(0).AcceptedForExpectedValue(0).Should().BeTrue();
 		}
+
+		[Test]
+		public void return_true_when_passed_a_number_at_the_above_distance()
+		{
+			_acceptanceMatcher.IsValue(2.049).AcceptedForExpectedValue(2).Should().BeTrue();
+		}
 	}
 }

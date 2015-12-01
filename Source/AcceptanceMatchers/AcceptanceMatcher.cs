@@ -21,6 +21,7 @@
 		public bool AcceptedForExpectedValue(double expectedValue)
 		{
 			if (_value == expectedValue) return true;
+			if (_value == expectedValue + _aboveDistance) return true;
 			return false;
 		}
 	}
