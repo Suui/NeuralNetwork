@@ -1,4 +1,5 @@
-﻿using Source.NeuralNetworks.Layers;
+﻿using Source.AcceptanceMatchers;
+using Source.NeuralNetworks.Layers;
 using Source.NeuralNetworks.Layers.Connections;
 using Source.NeuralNetworks.Layers.Perceptrons;
 
@@ -9,7 +10,7 @@ namespace Source.NeuralNetworks
 	{
 		private readonly LayerDictionary _layerDictionary;
 		private readonly LayerProperties _layerProperties;
-
+		private readonly AcceptanceMatcher _acceptanceMatcher;
 		private int _index;
 
 		public NeuralNetworkBuilder(ConnectionProperties connectionProperties, PerceptronProperties perceptronProperties)
@@ -21,6 +22,12 @@ namespace Source.NeuralNetworks
 				ConnectionProperties = connectionProperties,
 				PerceptronProperties = perceptronProperties
 			};
+		}
+
+		public NeuralNetworkBuilder(ConnectionProperties connectionProperties, PerceptronProperties perceptronProperties, AcceptanceMatcher acceptanceMatcher)
+			: this(connectionProperties, perceptronProperties)
+		{
+			_acceptanceMatcher = acceptanceMatcher;
 		}
 
 		public NeuralNetwork Build()
