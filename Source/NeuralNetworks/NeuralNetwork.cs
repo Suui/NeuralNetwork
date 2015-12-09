@@ -72,9 +72,9 @@ namespace Source.NeuralNetworks
 		{
 			if (i == LayerDictionary.Count) return;
 
-			for (var j = 1; j < LayerDictionary[i].CountPerceptrons; j++)
+			for (var j = 1; j <= LayerDictionary[i].CountPerceptrons; j++)
 			{
-				for (var k = 1; k < LayerDictionary[i + 1].CountPerceptrons; k++)
+				for (var k = 1; k <= LayerDictionary[i + 1].CountPerceptrons; k++)
 				{
 					LayerDictionary[i].Connection(j, k).ApplyDerivativeError();
 				}
@@ -158,9 +158,9 @@ namespace Source.NeuralNetworks
 
 			var result = new List<double>();
 
-			for (var j = 1; j < LayerDictionary[index].CountPerceptrons; j++)
+			for (var j = 1; j <= LayerDictionary[index].CountPerceptrons; j++)
 			{
-				for (var k = 1; k < LayerDictionary[index + 1].CountPerceptrons; k++)
+				for (var k = 1; k <= LayerDictionary[index + 1].CountPerceptrons; k++)
 				{
 					result.Add(LayerDictionary[index].Connection(j, k).Weight);
 				}
