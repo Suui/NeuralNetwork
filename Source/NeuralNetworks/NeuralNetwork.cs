@@ -83,12 +83,20 @@ namespace Source.NeuralNetworks
 
 		private void CalculateDerivativeErrors(int index)
 		{
-			for (var i = 1; i <= LayerDictionary[index + 1].CountPerceptrons; i++)
-			{
-				LayerDictionary[index + 1].Perceptron(i).DerivativeError = _errorCoefficient
-																		 * DeltaDictionary[index + 1].Delta(i).Value;
-			}
+			CalculateDerivativeErrorsForThresholds(index+1);
+			CalculateDerivativeErrorsForWeights(index);
+		}
 
+		private void CalculateDerivativeErrorsForThresholds(int index)
+		{
+			for (var i = 1; i <= LayerDictionary[index].CountPerceptrons; i++)
+			{
+				LayerDictionary[index].Perceptron(i).DerivativeError = _errorCoefficient * DeltaDictionary[index].Delta(i).Value;
+			}
+		}
+
+		private void CalculateDerivativeErrorsForWeights(int index)
+		{
 			for (var j = 1; j <= LayerDictionary[index].CountPerceptrons; j++)
 			{
 				for (var i = 1; i <= LayerDictionary[index + 1].CountPerceptrons; i++)
@@ -96,7 +104,7 @@ namespace Source.NeuralNetworks
 					LayerDictionary[index].Connection(j, i).DerivativeError = _errorCoefficient
 																			* LayerDictionary[index].Perceptron(j).ExitValue()
 																			* DeltaDictionary[index + 1].Delta(i).Value;
-                }
+				}
 			}
 		}
 
