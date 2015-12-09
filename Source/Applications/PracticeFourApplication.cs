@@ -16,7 +16,7 @@ namespace Source.Applications
 
 			var labelsReader = new ByteFileReader(@"D:\Projects\Programming\C#\NeuralNetwork\DataMNIST\train_labels", 8);
 			var imagesReader = new ByteFileReader(@"D:\Projects\Programming\C#\NeuralNetwork\DataMNIST\train_images", 16);
-			for (int i = 0; i < 60000; i++)
+			for (var i = 1; i <= 60000; i++)
 			{
 				neuralNetwork.ExpectedExitValues = labelsReader.Next();
 				neuralNetwork.EntryValues = imagesReader.Next(784);
