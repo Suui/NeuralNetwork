@@ -1,4 +1,5 @@
-﻿using Source.AcceptanceMatchers;
+﻿using System.Collections.Generic;
+using Source.AcceptanceMatchers;
 using Source.NeuralNetworks.Deltas;
 using Source.NeuralNetworks.Layers;
 using Source.NeuralNetworks.Layers.Perceptrons;
@@ -135,6 +136,23 @@ namespace Source.NeuralNetworks
 
 			for (var i = 1; i <= LayerDictionary[index + 1].CountPerceptrons; i++)
 				result += LayerDictionary[index].Connection(j, i).Weight * DeltaDictionary[index + 1].Delta(i).Value;
+
+			return result;
+		}
+
+		public List<double> GetWeightsForLayer(int index)
+		{
+			if (index == LayerDictionary.Count) return new List<double>();
+
+			var result = new List<double>();
+
+			for (var j = 1; j < LayerDictionary[index].CountPerceptrons; j++)
+			{
+				for (var k = 1; k < LayerDictionary[index + 1].CountPerceptrons; k++)
+				{
+					result.Add(LayerDictionary[index].Connection(j, k).Weight);
+				}
+			}
 
 			return result;
 		}
