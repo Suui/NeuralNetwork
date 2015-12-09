@@ -23,7 +23,7 @@ namespace Source.Applications
 				neuralNetwork.ExecuteBackPropagation();
 
 				errorCalculator.AddResult(neuralNetwork.ExpectedExitValues[1], neuralNetwork.ExitValues[1]);
-				Console.WriteLine("MSE for iteration " + i + " = " + errorCalculator.GetMSE());
+				Console.WriteLine("MSE for iteration " + i + " = " + errorCalculator.GetMSE() + ",  Success Percentage = " + errorCalculator.GetSuccessPercentage());
 			}
 		}
 	}
