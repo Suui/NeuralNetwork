@@ -28,7 +28,26 @@ namespace Source.Persistance
 
 				for (var i = 1; i <= secondLayerThresholds.Count; i++)
 				{
-					command.CommandText = "UPDATE pr4_thresholds_layer2 SET threshold=" + secondLayerThresholds[i-1] + " WHERE id=" + i;
+					command.CommandText = "UPDATE pr4_thresholds_layer2 SET threshold=" + secondLayerThresholds[i - 1] + " WHERE id=" + i;
+					command.ExecuteNonQuery();
+				}
+
+				for (var i = 1; i <= thirdLayerThresholds.Count; i++)
+				{
+					command.CommandText = "UPDATE pr4_thresholds_layer3 SET threshold=" + thirdLayerThresholds[i - 1] + " WHERE id=" + i;
+					command.ExecuteNonQuery();
+				}
+
+
+				for (var i = 1; i <= firstLayerWeights.Count; i++)
+				{
+					command.CommandText = "UPDATE pr4_weights_layer1 SET weight=" + firstLayerWeights[i - 1] + " WHERE id=" + i;
+					command.ExecuteNonQuery();
+				}
+
+				for (var i = 1; i <= secondLayerWeights.Count; i++)
+				{
+					command.CommandText = "UPDATE pr4_weights_layer2 SET weight=" + secondLayerWeights[i - 1] + " WHERE id=" + i;
 					command.ExecuteNonQuery();
 				}
 			}
