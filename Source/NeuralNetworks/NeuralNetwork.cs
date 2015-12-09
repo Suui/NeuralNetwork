@@ -156,5 +156,18 @@ namespace Source.NeuralNetworks
 
 			return result;
 		}
+
+		public List<double> GetThresholdsForLayer(int index)
+		{
+			var result = new List<double>();
+
+			foreach (Perceptron perceptron in LayerDictionary[index].Perceptrons)
+			{
+				var innerPerceptron = perceptron as InnerPerceptron;
+				if (innerPerceptron != null) result.Add(innerPerceptron.Threshold);
+			}
+
+			return result;
+		}
 	}
 }
