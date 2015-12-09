@@ -12,7 +12,6 @@ namespace Source.Persistance
 			var firstLayerWeights = neuralNetwork.GetWeightsForLayer(1);
 			var secondLayerWeights = neuralNetwork.GetWeightsForLayer(2);
 
-			var firstLayerThresholds = neuralNetwork.GetThresholdsForLayer(1);
 			var secondLayerThresholds = neuralNetwork.GetThresholdsForLayer(2);
 			var thirdLayerThresholds = neuralNetwork.GetThresholdsForLayer(3);
 
@@ -27,9 +26,9 @@ namespace Source.Persistance
 				connection.Open();
 				var command = new NpgsqlCommand { Connection = connection };
 
-				for (var i = 1; i <= firstLayerThresholds.Count; i++)
+				for (var i = 1; i <= secondLayerThresholds.Count; i++)
 				{
-					command.CommandText = "UPDATE pr4_thresholds_layer1 SET threshold=" + firstLayerThresholds[i-1] + " WHERE id=" + i;
+					command.CommandText = "UPDATE pr4_thresholds_layer2 SET threshold=" + secondLayerThresholds[i-1] + " WHERE id=" + i;
 					command.ExecuteNonQuery();
 				}
 			}

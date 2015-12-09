@@ -27,7 +27,7 @@ namespace Source.Applications
 				errorCalculator.AddResult(neuralNetwork.ExpectedExitValues[1], neuralNetwork.ExitValues[1]);
 				Console.WriteLine("MSE for iteration " + i + " = " + errorCalculator.GetMSE() + ",  Success Percentage = " + errorCalculator.GetSuccessPercentage());
 
-				if (i % 500 == 0)
+				if (i % 100 == 0)
 				{
 					Console.WriteLine("Saving current threshold and weight values in the database...");
 					database.SaveValuesFor(neuralNetwork);
