@@ -173,9 +173,9 @@ namespace Source.NeuralNetworks
 		{
 			var result = new List<double>();
 
-			foreach (Perceptron perceptron in LayerDictionary[index].Perceptrons)
+			for (var i = 1; i <= LayerDictionary[index].CountPerceptrons; i++)
 			{
-				var innerPerceptron = perceptron as InnerPerceptron;
+				var innerPerceptron = LayerDictionary[index].Perceptron(i) as InnerPerceptron;
 				if (innerPerceptron != null) result.Add(innerPerceptron.Threshold);
 			}
 
